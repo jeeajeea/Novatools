@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#1a1712">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Book Writer | AllToolHub</title>
+    <meta name="description" content="Write digital books with page flip animations. Free, private, and works entirely in your browser.">
+    <meta property="og:title" content="Book Writer | AllToolHub">
+    <meta property="og:description" content="Write digital books with page flip animations. Free, private, and works entirely in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alltoolhub.com/book-writer.html">
+    <meta property="og:image" content="https://alltoolhub.com/assets/og/og-image.svg">
+    <meta property="og:site_name" content="AllToolHub">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book Writer | AllToolHub">
+    <meta name="twitter:description" content="Write digital books with page flip animations. Free, private, and works entirely in your browser.">
+    <meta name="twitter:image" content="https://alltoolhub.com/assets/og/og-image.svg">
+    <meta name="twitter:url" content="https://alltoolhub.com/book-writer.html">
+    <link rel="canonical" href="https://alltoolhub.com/book-writer.html">
+    <link rel="sitemap" type="application/xml" href="https://alltoolhub.com/sitemap.xml">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Dancing+Script&family=Playfair+Display&family=Josefin+Sans&family=Special+Elite&family=IM+Fell+English&family=Cormorant+Garamond&family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/book-writer.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Book Writer",
+        "url": "https://alltoolhub.com/book-writer.html",
+        "description": "Write digital books with page flip animations. Free, private, and works entirely in your browser.",
+        "applicationCategory": "Multimedia",
+        "operatingSystem": "All",
+        "browserRequirements": "JavaScript enabled"
+    }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="top-toolbar">
+            <div class="toolbar-section" style="border-right:none;">
+                <a href="index.html" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--accent-gold);font-family:'Cinzel',serif;font-size:0.85rem;font-weight:600;padding:0 8px 0 4px;white-space:nowrap;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M9 15l2 2 4-4"/>
+                    </svg>
+                    <span>AllToolHub</span>
+                </a>
+            </div>
+            <div class="toolbar-section">
+                <div class="dropdown">
+                    <button class="toolbar-btn font-btn" id="font-dropdown-btn">Font</button>
+                    <div class="dropdown-content" id="font-dropdown">
+                        <div class="dropdown-item active" data-font="Georgia, serif">Classic Serif</div>
+                        <div class="dropdown-item" data-font="'Playfair Display', serif">Playfair</div>
+                        <div class="dropdown-item" data-font="'Cinzel', serif">Roman</div>
+                        <div class="dropdown-item" data-font="'IM Fell English', serif">Old English</div>
+                        <div class="dropdown-item" data-font="'Dancing Script', cursive">Calligraphy</div>
+                        <div class="dropdown-item" data-font="'Cormorant Garamond', serif">Garamond</div>
+                        <div class="dropdown-item" data-font="'Josefin Sans', sans-serif">Clean</div>
+                        <div class="dropdown-item" data-font="'Special Elite', cursive">Typewriter</div>
+                        <div class="dropdown-item" data-font="'Courier New', monospace">Mono</div>
+                        <div class="dropdown-item" data-font="'Abril Fatface', cursive">Abril Fatface</div>
+                        <div class="dropdown-item" data-font="'Times New Roman', serif">Times New Roman</div>
+                        <div class="dropdown-item" data-font="Arial, sans-serif">Arial</div>
+                        <div class="dropdown-item" data-font="'Helvetica Neue', Helvetica, sans-serif">Helvetica</div>
+                        <div class="dropdown-item" data-font="Verdana, sans-serif">Verdana</div>
+                        <div class="dropdown-item" data-font="'Trebuchet MS', sans-serif">Trebuchet</div>
+                        <div class="dropdown-item" data-font="'Palatino Linotype', Palatino, serif">Palatino</div>
+                        <div class="dropdown-item" data-font="'Book Antiqua', Palatino, serif">Book Antiqua</div>
+                        <div class="dropdown-item" data-font="'Lucida Console', Monaco, monospace">Lucida Console</div>
+                        <div class="dropdown-item" data-font="'Consolas', monospace">Consolas</div>
+                        <div class="dropdown-item" data-font="'Comic Sans MS', cursive">Comic Sans</div>
+                        <div class="dropdown-item" data-font="'Impact', sans-serif">Impact</div>
+                        <div class="dropdown-item" data-font="'Lucida Handwriting', cursive">Lucida Handwriting</div>
+                        <div class="dropdown-item" data-font="'Brush Script MT', cursive">Brush Script</div>
+                        <div class="dropdown-item" data-font="'Rockwell', serif">Rockwell</div>
+                        <div class="dropdown-item" data-font="'Century Gothic', sans-serif">Century Gothic</div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="toolbar-btn size-btn" id="size-dropdown-btn">Size</button>
+                    <div class="dropdown-content" id="size-dropdown">
+                        <div class="dropdown-item" data-size="8">8px</div>
+                        <div class="dropdown-item" data-size="9">9px</div>
+                        <div class="dropdown-item" data-size="10">10px</div>
+                        <div class="dropdown-item" data-size="11">11px</div>
+                        <div class="dropdown-item" data-size="12">12px</div>
+                        <div class="dropdown-item" data-size="13">13px</div>
+                        <div class="dropdown-item" data-size="14">14px</div>
+                        <div class="dropdown-item active" data-size="15">15px</div>
+                        <div class="dropdown-item" data-size="16">16px</div>
+                        <div class="dropdown-item" data-size="17">17px</div>
+                        <div class="dropdown-item" data-size="18">18px</div>
+                        <div class="dropdown-item" data-size="20">20px</div>
+                        <div class="dropdown-item" data-size="22">22px</div>
+                        <div class="dropdown-item" data-size="24">24px</div>
+                        <div class="dropdown-item" data-size="26">26px</div>
+                        <div class="dropdown-item" data-size="28">28px</div>
+                        <div class="dropdown-item" data-size="30">30px</div>
+                        <div class="dropdown-item" data-size="32">32px</div>
+                        <div class="dropdown-item" data-size="36">36px</div>
+                        <div class="dropdown-item" data-size="40">40px</div>
+                        <div class="dropdown-item" data-size="48">48px</div>
+                        <div class="dropdown-item" data-size="56">56px</div>
+                        <div class="dropdown-item" data-size="64">64px</div>
+                        <div class="dropdown-item" data-size="72">72px</div>
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar-section">
+                <button class="toolbar-btn" id="bold-btn" title="Bold (Ctrl+B)">
+                    <strong>B</strong>
+                </button>
+                <button class="toolbar-btn" id="italic-btn" title="Italic (Ctrl+I)">
+                    <em>I</em>
+                </button>
+                <button class="toolbar-btn" id="underline-btn" title="Underline (Ctrl+U)">
+                    <u>U</u>
+                </button>
+            </div>
+            <div class="toolbar-section">
+                <button class="toolbar-btn" id="align-left-btn" title="Align Left">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                </button>
+                <button class="toolbar-btn" id="align-center-btn" title="Align Center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="18" y1="18" x2="6" y2="18"/></svg>
+                </button>
+                <button class="toolbar-btn" id="align-right-btn" title="Align Right">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="toolbar-section">
+                <button class="toolbar-btn" id="case-btn" title="Toggle Case">Aa</button>
+            </div>
+            <div class="toolbar-section">
+                <button class="toolbar-btn" id="image-btn" title="Insert Image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </button>
+
+                <button class="toolbar-btn" id="bullet-btn" title="Bullet List">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/><circle cx="4" cy="18" r="1" fill="currentColor"/></svg>
+                </button>
+                <button class="toolbar-btn" id="arrow-btn" title="Arrow List">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="6" x2="19" y2="6"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="18" x2="19" y2="18"/><polyline points="15 9 19 12 15 15" fill="none"/></svg>
+                </button>
+                <button class="toolbar-btn" id="number-btn" title="Numbered List">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><text x="3" y="8" font-size="8" fill="currentColor">1</text><text x="3" y="14" font-size="8" fill="currentColor">2</text><text x="3" y="20" font-size="8" fill="currentColor">3</text></svg>
+                </button>
+            </div>
+            <div class="toolbar-section">
+                <button class="toolbar-btn active" id="text-btn" title="Text Mode">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                </button>
+                <button class="toolbar-btn" id="draw-btn" title="Draw">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                </button>
+                <button class="toolbar-btn" id="eraser-btn" title="Eraser">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 20H7L3 16c-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0l6 6c.6.6.6 1.5 0 2.1L15 18"/><path d="M6 11l4 4"/></svg>
+                </button>
+                <div class="dropdown">
+                    <button class="toolbar-btn" id="ink-color-btn" title="Ink Color">
+                        <div class="color-indicator" style="background:#1a1a1a"></div>
+                    </button>
+                    <div class="color-picker-dropdown" id="ink-color-picker">
+                        <div class="color-swatch active" data-color="#1a1a1a" style="background:#1a1a1a" title="Black"></div>
+                        <div class="color-swatch" data-color="#2b2b2b" style="background:#2b2b2b" title="Charcoal"></div>
+                        <div class="color-swatch" data-color="#333333" style="background:#333333" title="Dark Gray"></div>
+                        <div class="color-swatch" data-color="#555555" style="background:#555555" title="Gray"></div>
+                        <div class="color-swatch" data-color="#777777" style="background:#777777" title="Medium Gray"></div>
+                        <div class="color-swatch" data-color="#999999" style="background:#999999" title="Light Gray"></div>
+                        <div class="color-swatch" data-color="#0d47a1" style="background:#0d47a1" title="Dark Blue"></div>
+                        <div class="color-swatch" data-color="#1565c0" style="background:#1565c0" title="Blue"></div>
+                        <div class="color-swatch" data-color="#1976d2" style="background:#1976d2" title="Royal Blue"></div>
+                        <div class="color-swatch" data-color="#2196f3" style="background:#2196f3" title="Sky Blue"></div>
+                        <div class="color-swatch" data-color="#03a9f4" style="background:#03a9f4" title="Light Blue"></div>
+                        <div class="color-swatch" data-color="#00bcd4" style="background:#00bcd4" title="Cyan"></div>
+                        <div class="color-swatch" data-color="#009688" style="background:#009688" title="Teal"></div>
+                        <div class="color-swatch" data-color="#00796b" style="background:#00796b" title="Dark Teal"></div>
+                        <div class="color-swatch" data-color="#00695c" style="background:#00695c" title="Dark Green"></div>
+                        <div class="color-swatch" data-color="#2e7d32" style="background:#2e7d32" title="Green"></div>
+                        <div class="color-swatch" data-color="#388e3c" style="background:#388e3c" title="Light Green"></div>
+                        <div class="color-swatch" data-color="#4caf50" style="background:#4caf50" title="Bright Green"></div>
+                        <div class="color-swatch" data-color="#689f38" style="background:#689f38" title="Lime Green"></div>
+                        <div class="color-swatch" data-color="#5d4037" style="background:#5d4037" title="Dark Brown"></div>
+                        <div class="color-swatch" data-color="#795548" style="background:#795548" title="Brown"></div>
+                        <div class="color-swatch" data-color="#8d6e63" style="background:#8d6e63" title="Light Brown"></div>
+                        <div class="color-swatch" data-color="#a1887f" style="background:#a1887f" title="Tan"></div>
+                        <div class="color-swatch" data-color="#b71c1c" style="background:#b71c1c" title="Dark Red"></div>
+                        <div class="color-swatch" data-color="#c62828" style="background:#c62828" title="Red"></div>
+                        <div class="color-swatch" data-color="#d32f2f" style="background:#d32f2f" title="Bright Red"></div>
+                        <div class="color-swatch" data-color="#e53935" style="background:#e53935" title="Orange Red"></div>
+                        <div class="color-swatch" data-color="#f44336" style="background:#f44336" title="Coral"></div>
+                        <div class="color-swatch" data-color="#e91e63" style="background:#e91e63" title="Pink"></div>
+                        <div class="color-swatch" data-color="#f06292" style="background:#f06292" title="Light Pink"></div>
+                        <div class="color-swatch" data-color="#ab47bc" style="background:#ab47bc" title="Purple"></div>
+                        <div class="color-swatch" data-color="#8e24aa" style="background:#8e24aa" title="Violet"></div>
+                        <div class="color-swatch" data-color="#6a1b9a" style="background:#6a1b9a" title="Dark Purple"></div>
+                        <div class="color-swatch" data-color="#4a148c" style="background:#4a148c" title="Indigo"></div>
+                        <div class="color-swatch" data-color="#ff6f00" style="background:#ff6f00" title="Dark Orange"></div>
+                        <div class="color-swatch" data-color="#ff9800" style="background:#ff9800" title="Orange"></div>
+                        <div class="color-swatch" data-color="#ffa726" style="background:#ffa726" title="Light Orange"></div>
+                        <div class="color-swatch" data-color="#ffb300" style="background:#ffb300" title="Amber"></div>
+                        <div class="color-swatch" data-color="#ffca28" style="background:#ffca28" title="Yellow"></div>
+                        <div class="color-swatch" data-color="#fdd835" style="background:#fdd835" title="Bright Yellow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar-section">
+                <div class="dropdown">
+                    <button class="toolbar-btn" id="book-settings-btn" title="Book Settings">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </button>
+                    <div class="book-settings-dropdown" id="book-settings-dropdown">
+                        <h4>Page Color</h4>
+                        <div class="page-color-grid" id="page-color-grid">
+                            <div class="color-swatch active" data-page-color="#7a9e7e" style="background:#7a9e7e" title="Sage Green"></div>
+                            <div class="color-swatch" data-page-color="#8fbc8f" style="background:#8fbc8f" title="Dark Sea Green"></div>
+                            <div class="color-swatch" data-page-color="#a8c3a0" style="background:#a8c3a0" title="Light Sage"></div>
+                            <div class="color-swatch" data-page-color="#fdf8e8" style="background:#fdf8e8" title="Cream"></div>
+                            <div class="color-swatch" data-page-color="#f5ecd8" style="background:#f5ecd8" title="Aged Paper"></div>
+                            <div class="color-swatch" data-page-color="#ede0c8" style="background:#ede0c8" title="Parchment"></div>
+                            <div class="color-swatch" data-page-color="#f0e6d0" style="background:#f0e6d0" title="Light Tan"></div>
+                            <div class="color-swatch" data-page-color="#e6d5b8" style="background:#e6d5b8" title="Beige"></div>
+                            <div class="color-swatch" data-page-color="#dcc9a3" style="background:#dcc9a3" title="Wheat"></div>
+                            <div class="color-swatch" data-page-color="#ffffff" style="background:#ffffff" title="White"></div>
+                            <div class="color-swatch" data-page-color="#f5f5f5" style="background:#f5f5f5" title="Off White"></div>
+                            <div class="color-swatch" data-page-color="#e8f5e9" style="background:#e8f5e9" title="Light Green"></div>
+                            <div class="color-swatch" data-page-color="#c8e6c9" style="background:#c8e6c9" title="Mint"></div>
+                            <div class="color-swatch" data-page-color="#a5d6a7" style="background:#a5d6a7" title="Pale Green"></div>
+                            <div class="color-swatch" data-page-color="#fff3e0" style="background:#fff3e0" title="Light Orange"></div>
+                            <div class="color-swatch" data-page-color="#ffe0b2" style="background:#ffe0b2" title="Peach"></div>
+                            <div class="color-swatch" data-page-color="#ffcc80" style="background:#ffcc80" title="Apricot"></div>
+                            <div class="color-swatch" data-page-color="#e3f2fd" style="background:#e3f2fd" title="Light Blue"></div>
+                            <div class="color-swatch" data-page-color="#bbdefb" style="background:#bbdefb" title="Sky Blue"></div>
+                            <div class="color-swatch" data-page-color="#90caf9" style="background:#90caf9" title="Baby Blue"></div>
+                            <div class="color-swatch" data-page-color="#f3e5f5" style="background:#f3e5f5" title="Light Lavender"></div>
+                            <div class="color-swatch" data-page-color="#e1bee7" style="background:#e1bee7" title="Lavender"></div>
+                            <div class="color-swatch" data-page-color="#fce4ec" style="background:#fce4ec" title="Light Pink"></div>
+                            <div class="color-swatch" data-page-color="#f8bbd9" style="background:#f8bbd9" title="Blush"></div>
+                        </div>
+                        <h4>Cover Color</h4>
+                        <div class="page-color-grid" id="cover-color-grid">
+                            <div class="color-swatch active" data-cover-color="#7a9e7e" style="background:#7a9e7e" title="Sage Green"></div>
+                            <div class="color-swatch" data-cover-color="#5d7a5d" style="background:#5d7a5d" title="Forest Green"></div>
+                            <div class="color-swatch" data-cover-color="#8fbc8f" style="background:#8fbc8f" title="Sea Green"></div>
+                            <div class="color-swatch" data-cover-color="#2e4a2e" style="background:#2e4a2e" title="Dark Green"></div>
+                            <div class="color-swatch" data-cover-color="#1a1a1a" style="background:#1a1a1a" title="Black"></div>
+                            <div class="color-swatch" data-cover-color="#333333" style="background:#333333" title="Charcoal"></div>
+                            <div class="color-swatch" data-cover-color="#4a3728" style="background:#4a3728" title="Dark Brown"></div>
+                            <div class="color-swatch" data-cover-color="#5c4033" style="background:#5c4033" title="Brown Leather"></div>
+                            <div class="color-swatch" data-cover-color="#6d4c41" style="background:#6d4c41" title="Coffee"></div>
+                            <div class="color-swatch" data-cover-color="#8d6e63" style="background:#8d6e63" title="Light Brown"></div>
+                            <div class="color-swatch" data-cover-color="#1e3a5f" style="background:#1e3a5f" title="Navy"></div>
+                            <div class="color-swatch" data-cover-color="#283593" style="background:#283593" title="Dark Blue"></div>
+                            <div class="color-swatch" data-cover-color="#303f9f" style="background:#303f9f" title="Indigo"></div>
+                            <div class="color-swatch" data-cover-color="#4527a0" style="background:#4527a0" title="Deep Purple"></div>
+                            <div class="color-swatch" data-cover-color="#4a148c" style="background:#4a148c" title="Royal Purple"></div>
+                            <div class="color-swatch" data-cover-color="#6a1b9a" style="background:#6a1b9a" title="Purple"></div>
+                            <div class="color-swatch" data-cover-color="#ad1457" style="background:#ad1457" title="Dark Pink"></div>
+                            <div class="color-swatch" data-cover-color="#c62828" style="background:#c62828" title="Crimson"></div>
+                            <div class="color-swatch" data-cover-color="#d32f2f" style="background:#d32f2f" title="Red"></div>
+                            <div class="color-swatch" data-cover-color="#b71c1c" style="background:#b71c1c" title="Dark Red"></div>
+                            <div class="color-swatch" data-cover-color="#fdf8e8" style="background:#fdf8e8" title="Cream"></div>
+                            <div class="color-swatch" data-cover-color="#ffffff" style="background:#ffffff" title="White"></div>
+                            <div class="color-swatch" data-cover-color="#ff6f00" style="background:#ff6f00" title="Burnt Orange"></div>
+                            <div class="color-swatch" data-cover-color="#e65100" style="background:#e65100" title="Dark Orange"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar-section" style="margin-left:auto;">
+                <div class="stats-display">
+                    <div class="stat-item"><span class="stat-value" id="stat-words">0</span> words</div>
+                    <div class="stat-item"><span class="stat-value" id="stat-pages">1</span> pages</div>
+                </div>
+                <button class="action-btn" id="save-book-btn">Save</button>
+                <button class="action-btn secondary" id="export-book-btn">Export</button>
+                <div class="dropdown">
+                    <button class="toolbar-btn" id="books-dropdown-btn" title="Saved Books">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </button>
+                    <div class="saved-books-dropdown" id="saved-books-dropdown">
+                        <div id="saved-books-list"></div>
+                        <button class="new-book-btn" id="new-book-btn">+ New Book</button>
+                    </div>
+                </div>
+                <button class="help-btn" id="help-btn" title="Keyboard Shortcuts">?</button>
+            </div>
+        </div>
+
+        <main class="main-area">
+            <div class="book-container" id="book-container">
+                <div class="book" id="book">
+                    <div class="page-spread" id="page-spread">
+                        <div class="page left cover" id="page-left">
+                            <div class="page-spine-shadow"></div>
+                            <canvas class="page-lines-canvas" id="lines-canvas-left"></canvas>
+                            <canvas class="page-canvas" id="canvas-left"></canvas>
+                            <div class="page-lines" id="lines-left"></div>
+                            <div class="cover-border" id="cover-border"></div>
+                            <div class="cover-content-area" contenteditable="true" id="cover-content" data-placeholder="Click to write on cover..."></div>
+                            <button class="open-book-btn" id="open-book-btn">Open Book</button>
+                            <div class="page-footer-overlay cover-footer" id="page-left-footer">Cover</div>
+                        </div>
+                        <div class="page right" id="page-right">
+                            <div class="page-spine-shadow"></div>
+                            <canvas class="page-lines-canvas" id="lines-canvas-right"></canvas>
+                            <canvas class="page-canvas" id="canvas-right"></canvas>
+                            <div class="page-lines" id="lines-right"></div>
+                            <div class="page-content" contenteditable="true" id="page-content-right" data-placeholder="Start writing..."></div>
+                            <div class="page-footer-overlay" id="page-right-footer">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-nav">
+                <button class="nav-btn" id="prev-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    Prev
+                </button>
+                <button class="nav-btn" id="next-btn">
+                    Next
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <button class="thumbnail-toggle" id="thumbnail-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    </button>
+    <div class="thumbnail-sidebar" id="thumbnail-sidebar"></div>
+
+    <div class="image-modal" id="image-modal">
+        <div class="image-modal-content">
+            <h3>Insert Image</h3>
+            <div class="image-drop-zone" id="image-drop-zone">
+                <p>Drop image here or click to select</p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Supports PNG, JPG, GIF</p>
+            </div>
+            <button class="browse-btn" id="browse-btn">Browse Files</button>
+            <input type="file" id="image-input" accept="image/*">
+            <button class="close-modal" id="close-image-modal">Cancel</button>
+        </div>
+    </div>
+
+    <div class="export-modal" id="export-modal">
+        <div class="export-modal-content">
+            <h3>Export Book</h3>
+            <button class="export-option" id="export-html">Download as HTML</button>
+            <button class="export-option" id="export-pdf">Download as PDF</button>
+            <button class="export-close" id="close-export-modal">Cancel</button>
+        </div>
+    </div>
+
+    <div class="help-modal" id="help-modal">
+        <div class="help-modal-content">
+            <h3>Keyboard Shortcuts</h3>
+            <div class="shortcut-group">
+                <h4>Formatting</h4>
+                <div class="shortcut-row"><span class="shortcut-desc">Bold</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">B</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Italic</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">I</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Underline</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">U</span></div></div>
+            </div>
+            <div class="shortcut-group">
+                <h4>Navigation</h4>
+                <div class="shortcut-row"><span class="shortcut-desc">Next Page</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">→</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Previous Page</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">←</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">New Page</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">N</span></div></div>
+            </div>
+            <div class="shortcut-group">
+                <h4>Actions</h4>
+                <div class="shortcut-row"><span class="shortcut-desc">Save</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">S</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Undo</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">Z</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Redo</span><div class="shortcut-keys"><span class="key">Ctrl</span><span class="key">Y</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Toggle Draw Mode</span><div class="shortcut-keys"><span class="key">D</span></div></div>
+                <div class="shortcut-row"><span class="shortcut-desc">Toggle Eraser</span><div class="shortcut-keys"><span class="key">E</span></div></div>
+            </div>
+            <button class="close-modal" id="close-help-modal" style="margin-top:15px;">Close</button>
+        </div>
+    </div>
+
+    <div class="template-modal" id="template-modal">
+        <div class="template-modal-content">
+            <h3>Start with a Template</h3>
+            <div class="template-grid">
+                <div class="template-card" data-template="blank">
+                    <div class="template-icon">📄</div>
+                    <div class="template-name">Blank Book</div>
+                    <div class="template-desc">Start from scratch</div>
+                </div>
+                <div class="template-card" data-template="novel">
+                    <div class="template-icon">📖</div>
+                    <div class="template-name">Novel</div>
+                    <div class="template-desc">Chapters & structure</div>
+                </div>
+                <div class="template-card" data-template="journal">
+                    <div class="template-icon">📔</div>
+                    <div class="template-name">Journal</div>
+                    <div class="template-desc">Daily entries</div>
+                </div>
+                <div class="template-card" data-template="poetry">
+                    <div class="template-icon">✒️</div>
+                    <div class="template-name">Poetry</div>
+                    <div class="template-desc">Verses & stanzas</div>
+                </div>
+                <div class="template-card" data-template="screenplay">
+                    <div class="template-icon">🎬</div>
+                    <div class="template-name">Screenplay</div>
+                    <div class="template-desc">Script format</div>
+                </div>
+                <div class="template-card" data-template="notebook">
+                    <div class="template-icon">📝</div>
+                    <div class="template-name">Notebook</div>
+                    <div class="template-desc">Notes & sketches</div>
+                </div>
+            </div>
+            <button class="close-modal" id="close-template-modal" style="margin-top:15px;">Cancel</button>
+        </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/book-writer.js"></script>
+</body>
+</html>

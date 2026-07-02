@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#5a825a">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>Productivity Tools | To-Do, Timer, Flashcards - AllToolHub</title>
+    <meta name="description" content="Free productivity tools including to-do lists, word counters, pomodoro timers, flashcards, and habit trackers. Works offline in your browser.">
+    <meta property="og:title" content="Productivity Tools | Free Browser-Based Tools">
+    <meta property="og:description" content="To-Do lists, Word Counter, Pomodoro Timer, Flashcards, and Habit Tracker. All free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alltoolhub.com/productivity.html">
+    <meta property="og:image" content="https://alltoolhub.com/assets/og/og-image.svg">
+    <meta property="og:site_name" content="AllToolHub">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://alltoolhub.com/assets/og/og-image.svg">
+    <meta name="twitter:url" content="https://alltoolhub.com/productivity.html">
+    <link rel="canonical" href="https://alltoolhub.com/productivity.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle' fill='white'%3E%26%23x2713;%3C/text%3E%3C/svg%3E">
+    <link rel="sitemap" type="application/xml" href="https://alltoolhub.com/sitemap.xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/workspace.css">
+    <link rel="manifest" href="manifest.json">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Productivity Tools",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "To-Do List", "url": "#todo"},
+            {"@type": "ListItem", "position": 2, "name": "Word Counter", "url": "#wordcount"},
+            {"@type": "ListItem", "position": 3, "name": "Pomodoro Timer", "url": "#pomodoro"},
+            {"@type": "ListItem", "position": 4, "name": "Flashcards", "url": "#flashcards"},
+            {"@type": "ListItem", "position": 5, "name": "Habit Tracker", "url": "#habits"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "url": "https://alltoolhub.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Productivity", "url": "https://alltoolhub.com/productivity.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Is my data saved automatically?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! All your data including to-do items, flashcard decks, habit tracking, and settings are automatically saved to your browser's local storage. You can close the tab and return later with all your data intact."}},
+            {"@type": "Question", "name": "Can I export my data?", "acceptedAnswer": {"@type": "Answer", "text": "Currently, data is stored locally in your browser. You can access it by going to your browser's local storage or by simply copying your content. We're working on adding export features in future updates."}},
+            {"@type": "Question", "name": "How does the Pomodoro timer work?", "acceptedAnswer": {"@type": "Answer", "text": "The Pomodoro Technique uses 25-minute work sessions followed by 5-minute breaks. After 4 sessions, take a longer 15-30 minute break. Our timer tracks your sessions and lets you customize work and break durations."}},
+            {"@type": "Question", "name": "Can I create multiple flashcard decks?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! You can create multiple decks for different subjects. Use the \"New Deck\" button to create a new deck, and switch between them using the dropdown menu. Each deck stores its own set of flashcards."}},
+            {"@type": "Question", "name": "Does the habit tracker work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, the habit tracker works completely offline. Once the page loads, you can track habits without internet. Your streaks and history are saved locally in your browser."}},
+            {"@type": "Question", "name": "How does the word counter work?", "acceptedAnswer": {"@type": "Answer", "text": "Simply paste or type your text in the text area, and the word counter instantly displays word count, character count, sentence count, paragraph count, and estimated reading time. It also shows top keywords in your text."}}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-3d">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M9 15l2 2 4-4"/>
+                    </svg>
+                </div>
+                AllToolHub
+            </a>
+            <nav class="nav-links" id="nav-links">
+                <a href="pdf-tools.html">PDF Tools</a>
+                <a href="calculators.html">Calculators</a>
+                <a href="productivity.html" class="active">Productivity</a>
+                <a href="book-writer.html">Book Writer</a>
+                <button class="mobile-menu-btn mobile-menu-close" aria-label="Close menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </nav>
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+                <button class="mobile-menu-btn mobile-menu-open" aria-label="Open menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    <div class="page-header">
+        <h1>Productivity Tools</h1>
+        <p>To-do lists, timers, flashcards, and more — all free, all private, all in your browser.</p>
+    </div>
+
+    <div class="workspace">
+        <div class="workspace-main">
+            <div id="todo" class="tool-panel active">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>To-Do List</h2>
+                        <p>Organize tasks with categories and due dates</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Stay organized with categories, due dates, and progress tracking</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6); flex-wrap: wrap;">
+                    <input type="text" id="todo-input" placeholder="Add a new task..." style="flex: 1; min-width: 200px;">
+                    <select id="todo-category" style="width: 140px;">
+                        <option value="general">General</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="study">Study</option>
+                    </select>
+                    <input type="date" id="todo-due" style="width: 150px;">
+                    <button class="btn btn-primary" id="todo-add">Add</button>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6); flex-wrap: wrap;">
+                    <button class="btn btn-secondary todo-filter active" data-filter="all">All</button>
+                    <button class="btn btn-secondary todo-filter" data-filter="active">Active</button>
+                    <button class="btn btn-secondary todo-filter" data-filter="completed">Completed</button>
+                </div>
+                <div style="margin-bottom: var(--space-4);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                        <div id="todo-progress" style="width: 120px; height: 6px; background: var(--border-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                            <div id="todo-progress-fill" style="height: 100%; background: var(--accent-primary); width: 0; transition: width 0.3s;"></div>
+                        </div>
+                        <span id="todo-progress-text" style="font-size: 0.875rem; color: var(--text-muted);">0% complete</span>
+                    </div>
+                </div>
+                <ul id="todo-list" style="display: flex; flex-direction: column; gap: var(--space-2);"></ul>
+            </div>
+
+            <div id="wordcount" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Word Counter</h2>
+                        <p>Count words, characters, sentences, and reading time</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Analyze text with character, sentence, and keyword frequency counts</p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 200px; gap: var(--space-6);">
+                    <div>
+                        <textarea id="wc-text" placeholder="Paste or type your text here..." style="min-height: 300px; resize: vertical;"></textarea>
+                    </div>
+                    <div>
+                        <div class="card" style="text-align: center; margin-bottom: var(--space-4);">
+                            <div id="wc-words" style="font-size: 2.5rem; font-family: var(--font-serif); color: var(--accent-primary);">0</div>
+                            <div style="color: var(--text-muted); font-size: 0.875rem;">Words</div>
+                        </div>
+                        <div class="card" style="text-align: center; margin-bottom: var(--space-4);">
+                            <div id="wc-chars" style="font-size: 2rem; font-family: var(--font-serif); color: var(--text-primary);">0</div>
+                            <div style="color: var(--text-muted); font-size: 0.875rem;">Characters</div>
+                        </div>
+                        <div class="card" style="text-align: center; margin-bottom: var(--space-4);">
+                            <div id="wc-sentences" style="font-size: 1.5rem; font-family: var(--font-serif); color: var(--text-primary);">0</div>
+                            <div style="color: var(--text-muted); font-size: 0.875rem;">Sentences</div>
+                        </div>
+                        <div class="card" style="text-align: center; margin-bottom: var(--space-4);">
+                            <div id="wc-paragraphs" style="font-size: 1.5rem; font-family: var(--font-serif); color: var(--text-primary);">0</div>
+                            <div style="color: var(--text-muted); font-size: 0.875rem;">Paragraphs</div>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <div id="wc-reading" style="font-size: 1.25rem; font-family: var(--font-serif); color: var(--text-primary);">0 min</div>
+                            <div style="color: var(--text-muted); font-size: 0.875rem;">Read Time</div>
+                        </div>
+                        <div style="margin-top: var(--space-4);">
+                            <h4 style="margin-bottom: var(--space-2); font-size: 0.9375rem;">Top Keywords</h4>
+                            <div id="wc-keywords" style="font-size: 0.875rem; color: var(--text-muted);">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pomodoro" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Pomodoro Timer</h2>
+                        <p>Focus with 25-minute work sessions</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Boost focus with customizable work and break intervals</p>
+                    </div>
+                </div>
+                <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    <div style="margin-bottom: var(--space-6);">
+                        <button class="btn btn-secondary pomodoro-mode active" data-mode="work" style="margin-right: var(--space-2);">Work</button>
+                        <button class="btn btn-secondary pomodoro-mode" data-mode="break">Break</button>
+                    </div>
+                    <div style="position: relative; width: 240px; height: 240px; margin: 0 auto var(--space-8);">
+                        <svg viewBox="0 0 100 100" style="transform: rotate(-90deg);">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border-subtle)" stroke-width="6" />
+                            <circle id="pomodoro-progress" cx="50" cy="50" r="45" fill="none" stroke="var(--accent-primary)" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="0" stroke-linecap="round" />
+                        </svg>
+                        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                            <span id="pomodoro-time" style="font-size: 3rem; font-family: var(--font-serif);">25:00</span>
+                            <span id="pomodoro-label" style="color: var(--text-muted);">Focus Time</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--space-3); justify-content: center; margin-bottom: var(--space-6);">
+                        <button class="btn btn-primary" id="pomodoro-start">Start</button>
+                        <button class="btn btn-secondary" id="pomodoro-pause" disabled>Pause</button>
+                        <button class="btn btn-secondary" id="pomodoro-reset">Reset</button>
+                    </div>
+                    <div style="display: flex; gap: var(--space-4); justify-content: center; margin-bottom: var(--space-6);">
+                        <div>
+                            <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-1);">Work (min)</label>
+                            <input type="number" id="pomodoro-work" value="25" style="width: 70px; text-align: center;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-1);">Break (min)</label>
+                            <input type="number" id="pomodoro-break" value="5" style="width: 70px; text-align: center;">
+                        </div>
+                    </div>
+                    <div class="card" style="padding: var(--space-4); text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 600; color: var(--accent-primary);" id="pomodoro-sessions">0</div>
+                        <div style="color: var(--text-muted); font-size: 0.875rem;">Sessions Today</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="flashcards" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M12 8v8" />
+                            <path d="M8 12h8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Flashcards</h2>
+                        <p>Create decks and study with spaced repetition</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Study effectively with spaced repetition and shuffle modes</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6);">
+                    <select id="flashcard-deck" style="flex: 1;"></select>
+                    <button class="btn btn-secondary" id="flashcard-new-deck">New Deck</button>
+                    <button class="btn btn-secondary" id="flashcard-delete-deck">Delete</button>
+                </div>
+                <div id="flashcard-list-view">
+                    <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-4);">
+                        <input type="text" id="flashcard-front" placeholder="Front (question)" style="flex: 1;">
+                        <input type="text" id="flashcard-back" placeholder="Back (answer)" style="flex: 1;">
+                        <button class="btn btn-primary" id="flashcard-add">Add</button>
+                    </div>
+                    <div id="flashcard-cards" style="display: flex; flex-direction: column; gap: var(--space-2);"></div>
+                </div>
+                <div id="flashcard-study-view" style="display: none;">
+                    <div id="flashcard-card" style="min-height: 200px; perspective: 1000px; margin-bottom: var(--space-6);">
+                        <div id="flashcard-inner" style="position: relative; width: 100%; height: 200px; transform-style: preserve-3d; transition: transform 0.6s;">
+                            <div class="card" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; cursor: pointer; text-align: center; font-size: 1.25rem;" id="flashcard-front-display"></div>
+                            <div class="card" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; transform: rotateY(180deg); cursor: pointer; text-align: center; font-size: 1.25rem; background: var(--sage-50);" id="flashcard-back-display"></div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--space-3); justify-content: center;">
+                        <button class="btn btn-secondary" id="flashcard-prev" disabled>Previous</button>
+                        <button class="btn btn-primary" id="flashcard-flip">Flip</button>
+                        <button class="btn btn-secondary" id="flashcard-next" disabled>Next</button>
+                    </div>
+                    <div style="display: flex; gap: var(--space-3); justify-content: center; margin-top: var(--space-4);">
+                        <button class="btn btn-secondary" id="flashcard-known">Know It</button>
+                        <button class="btn btn-secondary" id="flashcard-review">Review</button>
+                        <button class="btn btn-secondary" id="flashcard-shuffle">Shuffle</button>
+                    </div>
+                    <div style="text-align: center; margin-top: var(--space-4);">
+                        <span id="flashcard-counter" style="color: var(--text-muted);">0 / 0</span>
+                    </div>
+                </div>
+                <div class="tool-actions" style="margin-top: var(--space-6);">
+                    <button class="btn btn-primary" id="flashcard-study">Start Study</button>
+                    <button class="btn btn-secondary" id="flashcard-back-list" style="display: none;">Back to List</button>
+                </div>
+            </div>
+
+            <div id="habits" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Habit Tracker</h2>
+                        <p>Build and track daily habits</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Build and maintain daily habits with streak tracking</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6);">
+                    <input type="text" id="habit-input" placeholder="New habit..." style="flex: 1;">
+                    <button class="btn btn-primary" id="habit-add">Add Habit</button>
+                </div>
+                <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6); flex-wrap: wrap;">
+                    <button class="btn btn-secondary habit-view active" data-view="week">Week View</button>
+                    <button class="btn btn-secondary habit-view" data-view="month">Month View</button>
+                </div>
+                <div style="overflow-x: auto;">
+                    <div id="habit-grid" style="min-width: 500px;"></div>
+                </div>
+                <div class="card" style="margin-top: var(--space-6); text-align: center;">
+                    <div style="font-size: 2rem; font-family: var(--font-serif); color: var(--accent-primary);" id="habit-streak">0</div>
+                    <div style="color: var(--text-muted);">Day Current Streak</div>
+                </div>
+            </div>
+
+            <div id="notes" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Quick Notes</h2>
+                        <p>Jot down ideas and save them locally</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Save and organize quick notes with auto-save to local storage</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6);">
+                    <input type="text" id="note-title" placeholder="Note title..." style="flex: 1;">
+                    <button class="btn btn-primary" id="note-save">Save Note</button>
+                    <button class="btn btn-secondary" id="note-new">New</button>
+                </div>
+                <div style="display: grid; grid-template-columns: 200px 1fr; gap: var(--space-6);">
+                    <div>
+                        <div id="notes-list" style="display: flex; flex-direction: column; gap: var(--space-2); max-height: 400px; overflow-y: auto;"></div>
+                    </div>
+                    <div>
+                        <textarea id="note-content" placeholder="Start writing..." style="min-height: 350px; resize: vertical;"></textarea>
+                        <div style="display: flex; justify-content: space-between; margin-top: var(--space-2);">
+                            <span id="note-word-count" style="font-size: 0.8rem; color: var(--text-muted);">0 words</span>
+                            <button class="btn btn-secondary" id="note-delete" style="font-size: 0.8rem; padding: var(--space-1) var(--space-3);">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="password" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Password Generator</h2>
+                        <p>Create strong, secure passwords</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Create secure passwords with real-time strength analysis</p>
+                    </div>
+                </div>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <div class="card" style="padding: var(--space-4); margin-bottom: var(--space-6); text-align: center;">
+                        <div id="password-output" style="font-size: 1.5rem; font-family: monospace; word-break: break-all; padding: var(--space-3); background: var(--bg-muted); border-radius: var(--radius-md); margin-bottom: var(--space-3); min-height: 50px; display: flex; align-items: center; justify-content: center;">Click Generate</div>
+                        <div style="display: flex; gap: var(--space-2); justify-content: center;">
+                            <button class="btn btn-primary" id="password-generate">Generate</button>
+                            <button class="btn btn-secondary" id="password-copy">Copy</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                        <div>
+                            <label style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: var(--space-2);">
+                                <span>Length</span>
+                                <span id="password-length-val">16</span>
+                            </label>
+                            <input type="range" id="password-length" min="8" max="64" value="16" style="width: 100%;">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+                            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                                <input type="checkbox" id="password-upper" checked> Uppercase (A-Z)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                                <input type="checkbox" id="password-lower" checked> Lowercase (a-z)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                                <input type="checkbox" id="password-numbers" checked> Numbers (0-9)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                                <input type="checkbox" id="password-symbols" checked> Symbols (!@#$)
+                            </label>
+                        </div>
+                        <div style="margin-top: var(--space-2);">
+                            <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1);">
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Strength:</span>
+                                <div id="password-strength-bar" style="flex: 1; height: 6px; background: var(--border-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                                    <div id="password-strength-fill" style="height: 100%; width: 0; background: #ef4444; transition: all 0.3s;"></div>
+                                </div>
+                            </div>
+                            <span id="password-strength-text" style="font-size: 0.8rem; color: var(--text-muted);">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="markdown" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Markdown Previewer</h2>
+                        <p>Write Markdown and see live preview</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Write and preview formatted text with live HTML rendering</p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+                    <div>
+                        <h4 style="margin-bottom: var(--space-2); font-size: 0.9rem; color: var(--text-muted);">Markdown</h4>
+                        <textarea id="markdown-input" placeholder="# Heading&#10;&#10;**Bold text** and *italic*&#10;&#10;- List item&#10;- Another item&#10;&#10;[Link](https://example.com)" style="min-height: 400px; resize: vertical; font-family: monospace;"></textarea>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: var(--space-2); font-size: 0.9rem; color: var(--text-muted);">Preview</h4>
+                        <div id="markdown-preview" class="card" style="min-height: 400px; overflow-y: auto; padding: var(--space-4);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stopwatch" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="13" r="8" />
+                            <path d="M12 9v4l2 2" />
+                            <path d="M5 3L2 6" />
+                            <path d="M22 6l-3-3" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Stopwatch</h2>
+                        <p>Track time with lap recording</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Measure elapsed time with start, stop, and lap recording</p>
+                    </div>
+                </div>
+                <div style="text-align: center; max-width: 500px; margin: 0 auto;">
+                    <div id="stopwatch-display" style="font-size: 4rem; font-family: monospace; margin: var(--space-8) 0;">00:00:00<span style="font-size: 2rem; color: var(--text-muted);">.00</span></div>
+                    <div style="display: flex; gap: var(--space-3); justify-content: center; margin-bottom: var(--space-6);">
+                        <button class="btn btn-primary" id="stopwatch-start">Start</button>
+                        <button class="btn btn-secondary" id="stopwatch-lap" disabled>Lap</button>
+                        <button class="btn btn-secondary" id="stopwatch-reset">Reset</button>
+                    </div>
+                    <div id="stopwatch-laps" style="max-height: 300px; overflow-y: auto; text-align: left;"></div>
+                </div>
+            </div>
+
+            <div id="expenses" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Expense Tracker</h2>
+                        <p>Track your spending and income</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Track income and expenses with category summaries</p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+                    <div class="card" style="text-align: center; padding: var(--space-4);">
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Income</div>
+                        <div id="expense-income" style="font-size: 1.5rem; color: #22c55e;">$0.00</div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: var(--space-4);">
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Expense</div>
+                        <div id="expense-total" style="font-size: 1.5rem; color: #ef4444;">$0.00</div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: var(--space-4);">
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Balance</div>
+                        <div id="expense-balance" style="font-size: 1.5rem; color: var(--accent-primary);">$0.00</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6); flex-wrap: wrap;">
+                    <input type="text" id="expense-desc" placeholder="Description" style="flex: 1; min-width: 150px;">
+                    <input type="number" id="expense-amount" placeholder="Amount" step="0.01" style="width: 100px;">
+                    <select id="expense-type" style="width: 100px;">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                    <button class="btn btn-primary" id="expense-add">Add</button>
+                </div>
+                <div id="expense-list" style="display: flex; flex-direction: column; gap: var(--space-2); max-height: 400px; overflow-y: auto;"></div>
+            </div>
+
+            <div id="lorem" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Lorem Ipsum Generator</h2>
+                        <p>Generate placeholder text for designs</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Generate placeholder text in various lengths and formats</p>
+                    </div>
+                </div>
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6); align-items: center; flex-wrap: wrap;">
+                        <label style="font-size: 0.9rem;">Paragraphs:</label>
+                        <input type="number" id="lorem-count" value="3" min="1" max="50" style="width: 70px; text-align: center;">
+                        <button class="btn btn-primary" id="lorem-generate">Generate</button>
+                        <button class="btn btn-secondary" id="lorem-copy">Copy</button>
+                    </div>
+                    <div id="lorem-output" class="card" style="padding: var(--space-4); min-height: 200px; max-height: 500px; overflow-y: auto; white-space: pre-wrap; line-height: 1.8;"></div>
+                </div>
+            </div>
+
+            <div id="colors" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <circle cx="17.5" cy="10.5" r="2.5" />
+                            <circle cx="8.5" cy="7.5" r="2.5" />
+                            <circle cx="6.5" cy="12.5" r="2.5" />
+                            <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.1-.12-.16-.26-.16-.43 0-.41.34-.75.75-.75H16c3.31 0 6-2.69 6-6 0-5.17-4.49-8.65-10-8.65z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Color Palette Generator</h2>
+                        <p>Generate and copy color palettes</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Create harmonious color schemes with hex and RGB values</p>
+                    </div>
+                </div>
+                <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    <button class="btn btn-primary" id="colors-generate" style="margin-bottom: var(--space-6);">Generate Palette</button>
+                    <div id="colors-palette" style="display: flex; gap: var(--space-3); margin-bottom: var(--space-6); flex-wrap: wrap; justify-content: center;"></div>
+                    <div id="colors-codes" style="display: flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center;"></div>
+                </div>
+            </div>
+
+            <div id="tipcalc" class="tool-panel">
+                <div class="tool-header">
+                    <div class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Tip Calculator</h2>
+                        <p>Split bills and calculate tips</p>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Calculate per-person totals with custom tip percentages</p>
+                    </div>
+                </div>
+                <div style="max-width: 500px; margin: 0 auto;">
+                    <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-6);">
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; margin-bottom: var(--space-1);">Bill Amount ($)</label>
+                            <input type="number" id="tip-bill" placeholder="0.00" step="0.01" style="width: 100%;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; margin-bottom: var(--space-1);">Tip Percentage (%)</label>
+                            <input type="range" id="tip-percent" min="0" max="50" value="15" style="width: 100%;">
+                            <div style="text-align: center; font-size: 1.25rem; font-weight: 600; color: var(--accent-primary);" id="tip-percent-val">15%</div>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; margin-bottom: var(--space-1);">Split Between</label>
+                            <input type="number" id="tip-split" value="1" min="1" max="20" style="width: 100px; text-align: center;">
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4);">
+                        <div class="card" style="text-align: center; padding: var(--space-4);">
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Tip</div>
+                            <div id="tip-amount" style="font-size: 1.25rem; font-weight: 600;">$0.00</div>
+                        </div>
+                        <div class="card" style="text-align: center; padding: var(--space-4);">
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Total</div>
+                            <div id="tip-total" style="font-size: 1.25rem; font-weight: 600;">$0.00</div>
+                        </div>
+                        <div class="card" style="text-align: center; padding: var(--space-4);">
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Per Person</div>
+                            <div id="tip-per-person" style="font-size: 1.25rem; font-weight: 600;">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-dock">
+            <div class="dock-grid">
+                <div class="dock-card active" data-tool="todo">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg>
+                    </div>
+                    <span>To-Do</span>
+                </div>
+                <div class="dock-card" data-tool="wordcount">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <span>Word Count</span>
+                </div>
+                <div class="dock-card" data-tool="pomodoro">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <span>Pomodoro</span>
+                </div>
+                <div class="dock-card" data-tool="flashcards">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M12 8v8" />
+                            <path d="M8 12h8" />
+                        </svg>
+                    </div>
+                    <span>Flashcards</span>
+                </div>
+                <div class="dock-card" data-tool="habits">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <span>Habits</span>
+                </div>
+                <div class="dock-card" data-tool="notes">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                    </div>
+                    <span>Notes</span>
+                </div>
+                <div class="dock-card" data-tool="password">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <span>Password</span>
+                </div>
+                <div class="dock-card" data-tool="markdown">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
+                    </div>
+                    <span>Markdown</span>
+                </div>
+                <div class="dock-card" data-tool="stopwatch">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="13" r="8" />
+                            <path d="M12 9v4l2 2" />
+                            <path d="M5 3L2 6" />
+                            <path d="M22 6l-3-3" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                        </svg>
+                    </div>
+                    <span>Stopwatch</span>
+                </div>
+                <div class="dock-card" data-tool="expenses">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <span>Expenses</span>
+                </div>
+                <div class="dock-card" data-tool="lorem">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <span>Lorem Ipsum</span>
+                </div>
+                <div class="dock-card" data-tool="colors">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <circle cx="17.5" cy="10.5" r="2.5" />
+                            <circle cx="8.5" cy="7.5" r="2.5" />
+                            <circle cx="6.5" cy="12.5" r="2.5" />
+                            <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.1-.12-.16-.26-.16-.43 0-.41.34-.75.75-.75H16c3.31 0 6-2.69 6-6 0-5.17-4.49-8.65-10-8.65z" />
+                        </svg>
+                    </div>
+                    <span>Colors</span>
+                </div>
+                <div class="dock-card" data-tool="tipcalc">
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <span>Tip Calc</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-4);">Why AllToolHub Productivity Tools Are Different</h2>
+            <p style="max-width: 700px; color: var(--text-secondary); margin-bottom: var(--space-4);">Our productivity tools work entirely in your browser with no accounts, no subscriptions, and no data collection. Your to-do lists, flashcards, habits, and notes are stored locally on your device, giving you complete control over your data.</p>
+            <p style="max-width: 700px; color: var(--text-secondary);">All tools auto-save as you work, so you never lose progress. The Pomodoro timer helps you focus with customizable work and break intervals. The habit tracker shows your streaks to keep you motivated. Everything works offline and loads instantly. No login required, no tracking, no limits.</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h3>Frequently Asked Questions</h3>
+                <p>Find answers to common questions about our productivity tools</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my data saved automatically?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All your data including to-do items, flashcard decks, habit tracking, and settings are automatically saved to your browser's local storage. You can close the tab and return later with all your data intact.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I export my data?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, data is stored locally in your browser. You can access it by going to your browser's local storage or by simply copying your content. We're working on adding export features in future updates.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the Pomodoro timer work?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Pomodoro Technique uses 25-minute work sessions followed by 5-minute breaks. After 4 sessions, take a longer 15-30 minute break. Our timer tracks your sessions and lets you customize work and break durations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I create multiple flashcard decks?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can create multiple decks for different subjects. Use the "New Deck" button to create a new deck, and switch between them using the dropdown menu. Each deck stores its own set of flashcards.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does the habit tracker work offline?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, the habit tracker works completely offline. Once the page loads, you can track habits without internet. Your streaks and history are saved locally in your browser.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the word counter work?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply paste or type your text in the text area, and the word counter instantly displays word count, character count, sentence count, paragraph count, and estimated reading time. It also shows top keywords in your text.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 AllToolHub. All tools are free to use.</p>
+        </div>
+    </footer>
+
+    <div class="toast-container"></div>
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/prod-tools.js"></script>
+</body>
+</html>

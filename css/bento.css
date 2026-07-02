@@ -1,0 +1,220 @@
+.bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    padding: 0 var(--space-6) var(--space-16);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-section {
+    margin-bottom: var(--space-12);
+}
+
+.category-section:last-child {
+    margin-bottom: 0;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+    padding: 0 var(--space-6);
+}
+
+.category-header h2 {
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.category-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sage-50);
+    border-radius: var(--radius-md);
+    color: var(--accent-primary);
+    flex-shrink: 0;
+}
+
+[data-theme="dark"] .category-icon {
+    background: rgba(90, 130, 90, 0.15);
+}
+
+.category-desc {
+    padding: 0 var(--space-6);
+    margin-bottom: var(--space-6);
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.bento-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.bento-card:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.bento-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sage-50);
+    border-radius: var(--radius-md);
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .bento-icon {
+    background: rgba(90, 130, 90, 0.15);
+}
+
+.bento-card h3 {
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+.bento-card p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.bento-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover));
+    color: white;
+    border: none;
+}
+
+.bento-card.featured h3 {
+    color: white;
+}
+
+.bento-card.featured p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.bento-card.featured .bento-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .bento {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-card.featured {
+        grid-column: span 2;
+    }
+
+    .category-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento {
+        grid-template-columns: 1fr;
+        padding: 0 var(--space-4) var(--space-10);
+    }
+
+    .bento-card.featured {
+        grid-column: span 1;
+    }
+
+    .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+        padding: 0 var(--space-4);
+    }
+
+    .category-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .category-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .category-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .category-desc {
+        padding: 0 var(--space-4);
+        margin-bottom: var(--space-5);
+    }
+
+    .bento-card {
+        padding: var(--space-4);
+    }
+
+    .bento-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bento {
+        padding: 0 var(--space-4) var(--space-8);
+        gap: var(--space-4);
+    }
+
+    .category-header {
+        padding: 0 var(--space-4);
+    }
+
+    .category-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .bento-card h3 {
+        font-size: 1rem;
+    }
+
+    .bento-card p {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .bento {
+        padding: 0 var(--space-3) var(--space-6);
+    }
+
+    .category-header {
+        padding: 0 var(--space-3);
+    }
+
+    .category-desc {
+        padding: 0 var(--space-3);
+    }
+}

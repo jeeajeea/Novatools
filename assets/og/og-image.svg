@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f7f4"/>
+      <stop offset="100%" stop-color="#e3ebe3"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#bg)" width="1200" height="630"/>
+  <rect x="540" y="220" width="120" height="120" rx="24" fill="#5a825a"/>
+  <text x="600" y="318" font-size="80" text-anchor="middle" fill="white" font-family="sans-serif">&#x2713;</text>
+  <text x="600" y="420" font-size="48" text-anchor="middle" fill="#2a362a" font-family="sans-serif" font-weight="700">AllToolHub</text>
+  <text x="600" y="470" font-size="24" text-anchor="middle" fill="#4a5a4a" font-family="sans-serif">Free Online Tools — Private, No Signup</text>
+</svg>
