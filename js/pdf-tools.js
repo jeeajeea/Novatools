@@ -2,15 +2,34 @@ document.addEventListener('pdf-deps-ready', function () {
 (function () {
     'use strict';
 
-    const PDFLib = window.PDFLib;
-    const pdfjsLib = window.pdfjsLib;
+    var PDFLib = window.PDFLib;
+    var pdfjsLib = window.pdfjsLib;
 
-    var workerSrc = 'vendor/pdf.worker.min.js';
-    var workerTest = new XMLHttpRequest();
-    workerTest.open('HEAD', workerSrc, false);
-    try { workerTest.send(); } catch (e) { workerSrc = ''; }
-    if (workerTest.status >= 400) {
-        workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    if (!PDFLib || !pdfjsLib) {
+        console.error('PDF dependencies missing');
+        var banner = document.getElementById('deps-error');
+        if (banner) banner.style.display = 'block';
+        return;
+    }
+
+    var CDN_WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    var WORKER_LOCAL = 'vendor/pdf.worker.min.js?v=2';
+    var workerSrc = WORKER_LOCAL;
+    if (window.location.protocol === 'file:') {
+        workerSrc = CDN_WORKER;
+        fetch(WORKER_LOCAL)
+            .then(function (r) { return r.blob(); })
+            .then(function (blob) { pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(blob); })
+            .catch(function () { pdfjsLib.GlobalWorkerOptions.workerSrc = CDN_WORKER; });
+    } else {
+        try {
+            var workerTest = new XMLHttpRequest();
+            workerTest.open('HEAD', workerSrc, false);
+            workerTest.send();
+            if (workerTest.status >= 400) workerSrc = CDN_WORKER;
+        } catch (_) {
+            workerSrc = CDN_WORKER;
+        }
     }
     pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
 
@@ -35,9 +54,10 @@ document.addEventListener('pdf-deps-ready', function () {
             return false;
         }
         try {
-            const pdf = await pdfjsLib.getDocument(await file.arrayBuffer()).promise;
-            if (pdf.numPages > MAX_PDF_PAGES) {
-                window.showToast('Book too large. Maximum is ' + MAX_PDF_PAGES + ' pages. This PDF has ' + pdf.numPages + ' pages.', 'error');
+            const pdfDoc = await PDFLib.PDFDocument.load(await file.arrayBuffer());
+            const pageCount = pdfDoc.getPageCount();
+            if (pageCount > MAX_PDF_PAGES) {
+                window.showToast('Book too large. Maximum is ' + MAX_PDF_PAGES + ' pages. This PDF has ' + pageCount + ' pages.', 'error');
                 return false;
             }
         } catch (e) {
@@ -184,66 +204,75 @@ document.addEventListener('pdf-deps-ready', function () {
         let mergedPdfBytes = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
         input.addEventListener('change', e => handleFiles(e.target.files));
         clearBtn.addEventListener('click', () => { state.files = []; mergedPdfBytes = null; resultArea.style.display = 'none'; filelist.innerHTML = ''; btn.disabled = true; });
 
-        function handleFiles(files) {
-            Array.from(files).forEach(f => {
-                if (f.type === 'application/pdf' && f.size <= MAX_PDF_SIZE) {
-                    state.files.push(f);
-                    addFileToList(f);
+        async function handleFiles(files) {
+            for (const f of Array.from(files)) {
+                if (f.size > MAX_PDF_SIZE) continue;
+                if (f.type === 'application/pdf' || !f.type || f.name.match(/\.pdf$/i)) {
+                    const valid = await validatePdfFile(f);
+                    if (valid) {
+                        state.files.push(f);
+                        addFileToList(f);
+                    }
                 }
-            });
+            }
             updateBtn();
         }
 
         function addFileToList(file) {
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            const preview = document.createElement('div');
+            preview.className = 'file-preview pdf-preview';
+            const previewCanvas = document.createElement('canvas');
+            previewCanvas.width = 60;
+            previewCanvas.height = 80;
+            const pageLabel = document.createElement('span');
+            pageLabel.textContent = '\u2026';
+            preview.appendChild(previewCanvas);
+            preview.appendChild(pageLabel);
+            const info = document.createElement('div');
+            info.className = 'file-info';
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'name';
+            nameSpan.textContent = file.name;
+            const sizeSpan = document.createElement('span');
+            sizeSpan.className = 'size';
+            sizeSpan.textContent = window.formatFileSize(file.size);
+            info.appendChild(nameSpan);
+            info.appendChild(sizeSpan);
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove';
+            removeBtn.textContent = '\u00d7';
+            removeBtn.addEventListener('click', () => {
+                state.files = state.files.filter(f => f !== file);
+                div.remove();
+                updateBtn();
+            });
+            div.appendChild(preview);
+            div.appendChild(info);
+            div.appendChild(removeBtn);
+            filelist.appendChild(div);
+
             const reader = new FileReader();
             reader.onload = async (e) => {
-                const pdf = await pdfjsLib.getDocument(e.target.result).promise;
-                const page = pdf.numPages;
-                const div = document.createElement('div');
-                div.className = 'file-item';
-                const preview = document.createElement('div');
-                preview.className = 'file-preview pdf-preview';
-                const previewCanvas = document.createElement('canvas');
-                previewCanvas.width = 60;
-                previewCanvas.height = 80;
-                const pageLabel = document.createElement('span');
-                pageLabel.textContent = page + 'p';
-                preview.appendChild(previewCanvas);
-                preview.appendChild(pageLabel);
-                const info = document.createElement('div');
-                info.className = 'file-info';
-                const nameSpan = document.createElement('span');
-                nameSpan.className = 'name';
-                nameSpan.textContent = file.name;
-                const sizeSpan = document.createElement('span');
-                sizeSpan.className = 'size';
-                sizeSpan.textContent = window.formatFileSize(file.size);
-                info.appendChild(nameSpan);
-                info.appendChild(sizeSpan);
-                const removeBtn = document.createElement('button');
-                removeBtn.className = 'remove';
-                removeBtn.textContent = '\u00d7';
-                removeBtn.addEventListener('click', () => {
-                    state.files = state.files.filter(f => f !== file);
-                    div.remove();
-                    updateBtn();
-                });
-                div.appendChild(preview);
-                div.appendChild(info);
-                div.appendChild(removeBtn);
-                filelist.appendChild(div);
-                const pageObj = await pdf.getPage(1);
-                const scale = 60 / pageObj.getViewport({ scale: 1 }).width;
-                const viewport = pageObj.getViewport({ scale: scale * 2 });
-                previewCanvas.width = viewport.width;
-                previewCanvas.height = viewport.height;
-                await pageObj.render({ canvasContext: previewCanvas.getContext('2d'), viewport }).promise;
+                try {
+                    const pdf = await pdfjsLib.getDocument(e.target.result).promise;
+                    pageLabel.textContent = pdf.numPages + 'p';
+                    const pageObj = await pdf.getPage(1);
+                    const scale = 60 / pageObj.getViewport({ scale: 1 }).width;
+                    const viewport = pageObj.getViewport({ scale: scale * 2 });
+                    previewCanvas.width = viewport.width;
+                    previewCanvas.height = viewport.height;
+                    await pageObj.render({ canvasContext: previewCanvas.getContext('2d'), viewport }).promise;
+                } catch (_) {
+                    pageLabel.textContent = '?p';
+                }
             };
             reader.readAsArrayBuffer(file);
         }
@@ -278,18 +307,49 @@ document.addEventListener('pdf-deps-ready', function () {
         const downloadBtn = document.getElementById('compress-download');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
-        function handleFile(f) {
-            if (!f || f.type !== 'application/pdf' || f.size > MAX_PDF_SIZE) return;
+        async function handleFile(f) {
+            if (!f || f.size > MAX_PDF_SIZE) return;
+            if (f.type !== 'application/pdf' && f.type !== '' && !f.name.match(/\.pdf$/i)) return;
+            const valid = await validatePdfFile(f);
+            if (!valid) return;
             state.file = f;
             filelist.innerHTML = '';
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                const pdf = await pdfjsLib.getDocument(e.target.result).promise;
+
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            const preview = document.createElement('div');
+            preview.className = 'file-preview';
+            const previewCanvas = document.createElement('canvas');
+            previewCanvas.width = 60;
+            previewCanvas.height = 80;
+            preview.appendChild(previewCanvas);
+            const info = document.createElement('div');
+            info.className = 'file-info';
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'name';
+            nameSpan.textContent = f.name;
+            const sizeSpan = document.createElement('span');
+            sizeSpan.className = 'size';
+            sizeSpan.textContent = window.formatFileSize(f.size);
+            info.appendChild(nameSpan);
+            info.appendChild(sizeSpan);
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove';
+            removeBtn.textContent = '\u00d7';
+            removeBtn.addEventListener('click', () => { state.file = null; div.remove(); btn.disabled = true; });
+            div.appendChild(preview);
+            div.appendChild(info);
+            div.appendChild(removeBtn);
+            filelist.appendChild(div);
+            btn.disabled = false;
+
+            try {
+                const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
                 const page = await pdf.getPage(1);
                 const scale = 60 / page.getViewport({ scale: 1 }).width;
                 const viewport = page.getViewport({ scale: scale * 2 });
@@ -297,36 +357,12 @@ document.addEventListener('pdf-deps-ready', function () {
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
                 await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-                const div = document.createElement('div');
-                div.className = 'file-item';
-                const preview = document.createElement('div');
-                preview.className = 'file-preview';
-                const previewCanvas = document.createElement('canvas');
                 previewCanvas.width = viewport.width;
                 previewCanvas.height = viewport.height;
                 previewCanvas.getContext('2d').drawImage(canvas, 0, 0);
-                preview.appendChild(previewCanvas);
-                const info = document.createElement('div');
-                info.className = 'file-info';
-                const nameSpan = document.createElement('span');
-                nameSpan.className = 'name';
-                nameSpan.textContent = f.name;
-                const sizeSpan = document.createElement('span');
-                sizeSpan.className = 'size';
-                sizeSpan.textContent = window.formatFileSize(f.size);
-                info.appendChild(nameSpan);
-                info.appendChild(sizeSpan);
-                const removeBtn = document.createElement('button');
-                removeBtn.className = 'remove';
-                removeBtn.textContent = '\u00d7';
-                removeBtn.addEventListener('click', () => { state.file = null; div.remove(); btn.disabled = true; });
-                div.appendChild(preview);
-                div.appendChild(info);
-                div.appendChild(removeBtn);
-                filelist.appendChild(div);
-                btn.disabled = false;
-            };
-            reader.readAsArrayBuffer(f);
+                } catch (err) {
+                    console.warn('Preview failed:', err);
+                }
         }
 
         btn.addEventListener('click', async () => {
@@ -342,57 +378,51 @@ document.addEventListener('pdf-deps-ready', function () {
                 let scale, jpegQuality;
 
                 if (level === 'high') {
-                    scale = 1.0; jpegQuality = 0.5;
+                    scale = 0.75; jpegQuality = 0.4;
                 } else if (level === 'medium') {
-                    scale = 1.2; jpegQuality = 0.7;
+                    scale = 1.0; jpegQuality = 0.7;
                 } else {
-                    scale = 1.5; jpegQuality = 0.85;
+                    scale = 1.5; jpegQuality = 0.88;
                 }
 
-                if (level === 'low') {
-                    compressedBytes = await pdfDoc.save({ useObjectStreams: true });
-                }
+                const pdfJsDoc = await pdfjsLib.getDocument(arrayBuffer).promise;
+                const newPdf = await PDFLib.PDFDocument.create();
+                const totalPages = pdfJsDoc.numPages;
+                const BATCH = 10;
 
-                if (level !== 'low') {
-                    const pdfJsDoc = await pdfjsLib.getDocument(arrayBuffer).promise;
-                    const newPdf = await PDFLib.PDFDocument.create();
-                    const totalPages = pdfJsDoc.numPages;
-                    const BATCH = 10;
-
-                    for (let start = 1; start <= totalPages; start += BATCH) {
-                        const end = Math.min(start + BATCH - 1, totalPages);
-                        const batch = [];
-                        for (let i = start; i <= end; i++) {
-                            batch.push(pdfJsDoc.getPage(i));
-                        }
-                        const pages = await Promise.all(batch);
-
-                        for (const page of pages) {
-                            const viewport = page.getViewport({ scale });
-                            const canvas = document.createElement('canvas');
-                            canvas.width = viewport.width;
-                            canvas.height = viewport.height;
-                            const ctx = canvas.getContext('2d');
-                            await page.render({ canvasContext: ctx, viewport }).promise;
-
-                            const jpgDataUrl = canvas.toDataURL('image/jpeg', jpegQuality);
-                            const jpgBytes = Uint8Array.from(atob(jpgDataUrl.split(',')[1]), c => c.charCodeAt(0));
-                            const jpgImage = await newPdf.embedJpg(jpgBytes);
-
-                            const origViewport = page.getViewport({ scale: 1 });
-                            const newPage = newPdf.addPage([origViewport.width, origViewport.height]);
-                            newPage.drawImage(jpgImage, {
-                                x: 0, y: 0,
-                                width: origViewport.width,
-                                height: origViewport.height
-                            });
-                        }
-
-                        btn.textContent = `Compressing... ${Math.round(end / totalPages * 100)}%`;
-                        await new Promise(r => setTimeout(r, 0));
+                for (let start = 1; start <= totalPages; start += BATCH) {
+                    const end = Math.min(start + BATCH - 1, totalPages);
+                    const batch = [];
+                    for (let i = start; i <= end; i++) {
+                        batch.push(pdfJsDoc.getPage(i));
                     }
-                    compressedBytes = await newPdf.save({ useObjectStreams: true });
+                    const pages = await Promise.all(batch);
+
+                    for (const page of pages) {
+                        const viewport = page.getViewport({ scale });
+                        const canvas = document.createElement('canvas');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+                        const ctx = canvas.getContext('2d');
+                        await page.render({ canvasContext: ctx, viewport }).promise;
+
+                        const jpgDataUrl = canvas.toDataURL('image/jpeg', jpegQuality);
+                        const jpgBytes = Uint8Array.from(atob(jpgDataUrl.split(',')[1]), c => c.charCodeAt(0));
+                        const jpgImage = await newPdf.embedJpg(jpgBytes);
+
+                        const origViewport = page.getViewport({ scale: 1 });
+                        const newPage = newPdf.addPage([origViewport.width, origViewport.height]);
+                        newPage.drawImage(jpgImage, {
+                            x: 0, y: 0,
+                            width: origViewport.width,
+                            height: origViewport.height
+                        });
+                    }
+
+                    btn.textContent = `Compressing... ${Math.round(end / totalPages * 100)}%`;
+                    await new Promise(r => setTimeout(r, 0));
                 }
+                compressedBytes = await newPdf.save({ useObjectStreams: true });
 
                 state.compressedBytes = compressedBytes;
                 document.getElementById('compress-original').textContent = window.formatFileSize(state.file.size);
@@ -439,9 +469,9 @@ document.addEventListener('pdf-deps-ready', function () {
         let splitBytes = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         async function handleFile(f) {
@@ -449,28 +479,34 @@ document.addEventListener('pdf-deps-ready', function () {
             state.file = f;
             state.pdfDoc = await PDFLib.PDFDocument.load(await f.arrayBuffer());
             state.selectedPages.clear();
-            pageGrid.innerHTML = '';
-            
-            const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
-            for (let i = 1; i <= pdf.numPages; i++) {
-                const page = await pdf.getPage(i);
-                const scale = 80 / page.getViewport({ scale: 1 }).width;
-                const viewport = page.getViewport({ scale: scale * 2 });
-                const canvas = document.createElement('canvas');
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-                
-                const div = document.createElement('div');
-                div.className = 'page-thumb';
-                div.innerHTML = window.sanitizeHtml(`<canvas width="${viewport.width}" height="${viewport.height}"></canvas><span>${i}</span>`);
-                div.querySelector('canvas').getContext('2d').drawImage(canvas, 0, 0);
-                div.onclick = () => togglePage(i);
-                pageGrid.appendChild(div);
-            }
+            pageGrid.innerHTML = '<p style="padding:1rem;color:var(--text-muted);">Loading preview\u2026</p>';
             rangesInput.style.display = 'block';
             previewBtn.style.display = 'inline-block';
             btn.disabled = true;
+
+            try {
+                const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
+                pageGrid.innerHTML = '';
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const scale = 80 / page.getViewport({ scale: 1 }).width;
+                    const viewport = page.getViewport({ scale: scale * 2 });
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'page-thumb';
+                    div.innerHTML = window.sanitizeHtml(`<canvas width="${viewport.width}" height="${viewport.height}"></canvas><span>${i}</span>`);
+                    div.querySelector('canvas').getContext('2d').drawImage(canvas, 0, 0);
+                    div.onclick = () => togglePage(i);
+                    pageGrid.appendChild(div);
+                }
+            } catch (_) {
+                console.warn('PDF preview failed:', _);
+                pageGrid.innerHTML = '<p style="padding:1rem;color:var(--text-muted);">Previews unavailable. Use the range input to select pages manually.</p>';
+            }
         }
 
         function togglePage(num) {
@@ -531,54 +567,65 @@ document.addEventListener('pdf-deps-ready', function () {
         let zipBlob = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         async function handleFile(f) {
             if (!await validatePdfFile(f)) return;
             state.file = f;
-            const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
-            pageGrid.innerHTML = '';
-            for (let i = 1; i <= pdf.numPages; i++) {
-                const page = await pdf.getPage(i);
-                const scale = 80 / page.getViewport({ scale: 1 }).width;
-                const viewport = page.getViewport({ scale: scale * 2 });
-                const canvas = document.createElement('canvas');
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-                
-                const div = document.createElement('div');
-                div.className = 'page-thumb';
-                div.innerHTML = window.sanitizeHtml(`<canvas width="${viewport.width}" height="${viewport.height}"></canvas><span>${i}</span>`);
-                div.querySelector('canvas').getContext('2d').drawImage(canvas, 0, 0);
-                pageGrid.appendChild(div);
-            }
+            pageGrid.innerHTML = '<p style="padding:1rem;color:var(--text-muted);">Loading preview\u2026</p>';
             btn.disabled = false;
+
+            try {
+                const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
+                pageGrid.innerHTML = '';
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const scale = 80 / page.getViewport({ scale: 1 }).width;
+                    const viewport = page.getViewport({ scale: scale * 2 });
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'page-thumb';
+                    div.innerHTML = window.sanitizeHtml(`<canvas width="${viewport.width}" height="${viewport.height}"></canvas><span>${i}</span>`);
+                    div.querySelector('canvas').getContext('2d').drawImage(canvas, 0, 0);
+                    pageGrid.appendChild(div);
+                }
+            } catch (_) {
+                console.warn('PDF preview failed:', _);
+                pageGrid.innerHTML = '<p style="padding:1rem;color:var(--text-muted);">Previews unavailable. You can still convert the PDF.</p>';
+            }
         }
 
         btn.addEventListener('click', async () => {
             btn.disabled = true; btn.textContent = 'Converting...';
             if (typeof JSZip === 'undefined') { window.showToast('JSZip library not loaded', 'error'); btn.disabled = false; btn.textContent = 'Convert to Images'; return; }
-            const zip = new JSZip();
-            const pdf = await pdfjsLib.getDocument(await state.file.arrayBuffer()).promise;
-            for (let i = 1; i <= pdf.numPages; i++) {
-                progressFill.style.width = ((i / pdf.numPages) * 100) + '%';
-                const page = await pdf.getPage(i);
-                const viewport = page.getViewport({ scale: 2 });
-                const canvas = document.createElement('canvas');
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-                const dataUrl = canvas.toDataURL('image/png').split(',')[1];
-                zip.file(`page-${i}.png`, dataUrl, { base64: true });
+            try {
+                const zip = new JSZip();
+                const pdf = await pdfjsLib.getDocument(await state.file.arrayBuffer()).promise;
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    progressFill.style.width = ((i / pdf.numPages) * 100) + '%';
+                    const page = await pdf.getPage(i);
+                    const viewport = page.getViewport({ scale: 2 });
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                    const dataUrl = canvas.toDataURL('image/png').split(',')[1];
+                    zip.file(`page-${i}.png`, dataUrl, { base64: true });
+                }
+                zipBlob = await zip.generateAsync({ type: 'blob' });
+                resultArea.style.display = 'block';
+                progressFill.style.width = '0%';
+                window.showToast('Conversion complete!', 'success');
+            } catch (err) {
+                window.showToast('Conversion failed: ' + err.message, 'error');
             }
-            zipBlob = await zip.generateAsync({ type: 'blob' });
-            resultArea.style.display = 'block';
-            progressFill.style.width = '0%';
-            window.showToast('Conversion complete!', 'success');
             btn.disabled = false; btn.textContent = 'Convert to Images';
         });
         downloadBtn.addEventListener('click', () => zipBlob && window.downloadBlob(zipBlob, 'pdf-images.zip'));
@@ -596,9 +643,9 @@ document.addEventListener('pdf-deps-ready', function () {
         let rotatedBytes = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         async function handleFile(f) {
@@ -606,25 +653,37 @@ document.addEventListener('pdf-deps-ready', function () {
             state.file = f;
             state.pdfDoc = await PDFLib.PDFDocument.load(await f.arrayBuffer());
             state.rotations = {};
-            pageGrid.innerHTML = '';
+            pageGrid.innerHTML = '<p style="padding:1rem;color:var(--text-muted);">Loading preview\u2026</p>';
             
-            const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
-            for (let i = 1; i <= pdf.numPages; i++) {
-                const page = await pdf.getPage(i);
-                const scale = 80 / page.getViewport({ scale: 1 }).width;
-                const viewport = page.getViewport({ scale: scale * 2 });
-                const canvas = document.createElement('canvas');
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-                
-                const div = document.createElement('div');
-                div.className = 'page-thumb';
-                div.dataset.page = i - 1;
-                div.innerHTML = window.sanitizeHtml(`<canvas width="${viewport.width}" height="${viewport.height}"></canvas><span>${i}</span>`);
-                div.querySelector('canvas').getContext('2d').drawImage(canvas, 0, 0);
-                div.onclick = () => { state.rotations[div.dataset.page] = (state.rotations[div.dataset.page] || 0) + 90; updateRotations(); };
-                pageGrid.appendChild(div);
+            try {
+                const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const scale = 80 / page.getViewport({ scale: 1 }).width;
+                    const viewport = page.getViewport({ scale: scale * 2 });
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'page-thumb';
+                    div.dataset.page = i - 1;
+                    div.innerHTML = window.sanitizeHtml(`<canvas width="${viewport.width}" height="${viewport.height}"></canvas><span>${i}</span>`);
+                    div.querySelector('canvas').getContext('2d').drawImage(canvas, 0, 0);
+                    div.onclick = () => { state.rotations[div.dataset.page] = (state.rotations[div.dataset.page] || 0) + 90; updateRotations(); };
+                    pageGrid.appendChild(div);
+                }
+            } catch (_) {
+                window.showToast('Page previews unavailable. Click page numbers to rotate.', 'warning');
+                for (let i = 1; i <= state.pdfDoc.getPageCount(); i++) {
+                    const div = document.createElement('div');
+                    div.className = 'page-thumb';
+                    div.dataset.page = i - 1;
+                    div.innerHTML = '<div class="page-num">' + i + '</div>';
+                    div.onclick = () => { state.rotations[div.dataset.page] = (state.rotations[div.dataset.page] || 0) + 90; updateRotations(); };
+                    pageGrid.appendChild(div);
+                }
             }
             btn.disabled = false;
         }
@@ -714,9 +773,9 @@ document.addEventListener('pdf-deps-ready', function () {
         }
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         async function handleFile(f) {
@@ -1130,15 +1189,18 @@ document.addEventListener('pdf-deps-ready', function () {
 
             dropzone.addEventListener('dragover', e => {
                 e.preventDefault();
+                e.stopPropagation();
                 dropzone.classList.add('dragover');
             });
 
-            dropzone.addEventListener('dragleave', () => {
+            dropzone.addEventListener('dragleave', e => {
+                e.stopPropagation();
                 dropzone.classList.remove('dragover');
             });
 
             dropzone.addEventListener('drop', e => {
                 e.preventDefault();
+                e.stopPropagation();
                 dropzone.classList.remove('dragover');
                 handleUpload(e.dataTransfer.files[0]);
             });
@@ -1317,9 +1379,9 @@ document.addEventListener('pdf-deps-ready', function () {
         qualityInput.addEventListener('input', () => qualityVal.textContent = qualityInput.value + '%');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function handleFile(f) {
@@ -1406,9 +1468,9 @@ document.addEventListener('pdf-deps-ready', function () {
         const downloadBtn = document.getElementById('jpg2png-download');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function handleFile(f) {
@@ -1495,9 +1557,9 @@ document.addEventListener('pdf-deps-ready', function () {
 
         qualityInput.addEventListener('input', () => qualityVal.textContent = qualityInput.value + '%');
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function handleFile(f) {
@@ -1587,9 +1649,9 @@ document.addEventListener('pdf-deps-ready', function () {
 
         qualityInput.addEventListener('input', () => qualityVal.textContent = qualityInput.value + '%');
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function handleFile(f) {
@@ -1676,9 +1738,9 @@ document.addEventListener('pdf-deps-ready', function () {
         const downloadBtn = document.getElementById('bmp2png-download');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function handleFile(f) {
@@ -1763,9 +1825,9 @@ document.addEventListener('pdf-deps-ready', function () {
         const downloadBtn = document.getElementById('svg2png-download');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function sanitizeSvg(svgText) {
@@ -1779,8 +1841,12 @@ document.addEventListener('pdf-deps-ready', function () {
             });
             doc.querySelectorAll('*').forEach(el => {
                 [...el.attributes].forEach(attr => {
-                    if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
-                    if (attr.value && /javascript:|data:text\/html|vbscript:/i.test(attr.value)) {
+                    if (attr.name.startsWith('on')) {
+                        el.removeAttribute(attr.name);
+                        return;
+                    }
+                    const val = attr.value.replace(/[\t\n\r]/g, '').toLowerCase();
+                    if (/^\s*(javascript|data|vbscript|blob):/.test(val)) {
                         el.removeAttribute(attr.name);
                     }
                 });
@@ -1878,9 +1944,9 @@ document.addEventListener('pdf-deps-ready', function () {
         const downloadBtn = document.getElementById('jpg2pdf-download');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
         input.addEventListener('change', e => handleFiles(e.target.files));
 
         function handleFiles(files) {
@@ -1994,9 +2060,9 @@ document.addEventListener('pdf-deps-ready', function () {
         const downloadBtn = document.getElementById('txt2pdf-download');
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         function handleFile(f) {
@@ -2179,9 +2245,9 @@ document.addEventListener('pdf-deps-ready', function () {
         const scale = 1.5;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         async function handleFile(f) {
@@ -2191,17 +2257,6 @@ document.addEventListener('pdf-deps-ready', function () {
             const page = state.pdfDoc.getPages()[0];
             pageWidth = page.getWidth();
             pageHeight = page.getHeight();
-
-            const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
-            const pdfPage = await pdf.getPage(1);
-            const viewport = pdfPage.getViewport({ scale });
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-            await pdfPage.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-            
-            previewWrap.style.display = 'block';
-            state.cropRect = null;
-            updateOverlay();
 
             filelist.innerHTML = '';
             const div = document.createElement('div');
@@ -2224,6 +2279,20 @@ document.addEventListener('pdf-deps-ready', function () {
             div.appendChild(removeBtn);
             filelist.appendChild(div);
             btn.disabled = false;
+
+            try {
+                const pdf = await pdfjsLib.getDocument(await f.arrayBuffer()).promise;
+                const pdfPage = await pdf.getPage(1);
+                const viewport = pdfPage.getViewport({ scale });
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                await pdfPage.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                previewWrap.style.display = 'block';
+                state.cropRect = null;
+                updateOverlay();
+            } catch (_) {
+                window.showToast('Preview unavailable. You can still crop by entering coordinates.', 'warning');
+            }
         }
 
         function updateOverlay() {
@@ -2333,9 +2402,9 @@ document.addEventListener('pdf-deps-ready', function () {
 
         // Initialize
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => handleFile(e.target.files[0]));
 
         // Tool buttons
@@ -2880,7 +2949,7 @@ document.addEventListener('pdf-deps-ready', function () {
                 ${el.type === 'text' ? `
                 <div class="canva-prop-group">
                     <label class="canva-prop-label">Text</label>
-                    <input type="text" class="canva-prop-input" id="prop-text" value="${(el.text || '').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" placeholder="Text content">
+                    <input type="text" class="canva-prop-input" id="prop-text" value="${window.encodeHtmlAttr(el.text || '')}" placeholder="Text content">
                 </div>
                 ` : ''}
             `;
@@ -3031,178 +3100,7 @@ document.addEventListener('pdf-deps-ready', function () {
         }
     })();
 
-    /* ================= UNLOCK PDF ================= */
-    (function() {
-        const state = { file: null, password: '', pdfDoc: null };
-        const dropzone = document.getElementById('unlock-dropzone');
-        const input = document.getElementById('unlock-input');
-        const filelist = document.getElementById('unlock-filelist');
-        const passwordWrap = document.getElementById('unlock-password-wrap');
-        const passwordInput = document.getElementById('unlock-password');
-        const btn = document.getElementById('unlock-btn');
-        const resultArea = document.getElementById('unlock-result');
-        const downloadBtn = document.getElementById('unlock-download');
-        let unlockedPdfBytes = null;
 
-        dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
-        input.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
-
-        async function handleFile(file) {
-            if (!await validatePdfFile(file)) return;
-            state.file = file;
-            filelist.innerHTML = '';
-            var div = document.createElement('div');
-            div.className = 'file-item';
-            var info = document.createElement('div');
-            info.className = 'file-info';
-            var nameSpan = document.createElement('span');
-            nameSpan.className = 'name';
-            nameSpan.textContent = file.name;
-            var sizeSpan = document.createElement('span');
-            sizeSpan.className = 'size';
-            sizeSpan.textContent = window.formatFileSize(file.size);
-            info.appendChild(nameSpan);
-            info.appendChild(sizeSpan);
-            div.appendChild(info);
-            filelist.appendChild(div);
-            passwordWrap.style.display = 'block';
-            btn.disabled = false;
-        }
-
-        passwordInput.addEventListener('input', function () { state.password = passwordInput.value; });
-
-        btn.addEventListener('click', async function () {
-            if (!state.file || !state.password) {
-                window.showToast('Please enter the password', 'error');
-                return;
-            }
-            btn.disabled = true;
-            btn.textContent = 'Unlocking...';
-            try {
-                var arrayBuffer = await state.file.arrayBuffer();
-                const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, { userPassword: state.password });
-                unlockedPdfBytes = await pdfDoc.save();
-                resultArea.style.display = 'block';
-                window.showToast('PDF unlocked!', 'success');
-            } catch (err) {
-                window.showToast('Failed to unlock: ' + (err.message || 'Invalid password'), 'error');
-            }
-            btn.disabled = false;
-            btn.textContent = 'Unlock PDF';
-        });
-
-        downloadBtn.addEventListener('click', () => {
-            if (unlockedPdfBytes) {
-                const blob = new Blob([unlockedPdfBytes], { type: 'application/pdf' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = state.file.name.replace('.pdf', '_unlocked.pdf');
-                a.click();
-                URL.revokeObjectURL(url);
-            }
-        });
-    })();
-
-    /* ================= PROTECT PDF ================= */
-    (function() {
-        const state = { file: null };
-        const dropzone = document.getElementById('protect-dropzone');
-        const input = document.getElementById('protect-input');
-        const filelist = document.getElementById('protect-filelist');
-        const optionsWrap = document.getElementById('protect-options-wrap');
-        const passwordInput = document.getElementById('protect-password');
-        const confirmInput = document.getElementById('protect-confirm');
-        const btn = document.getElementById('protect-btn');
-        const resultArea = document.getElementById('protect-result');
-        const downloadBtn = document.getElementById('protect-download');
-        let protectedPdfBytes = null;
-
-        dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
-        input.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
-
-        async function handleFile(file) {
-            if (!await validatePdfFile(file)) return;
-            state.file = file;
-            filelist.innerHTML = '';
-            const div = document.createElement('div');
-            div.className = 'file-item';
-            const info = document.createElement('div');
-            info.className = 'file-info';
-            const nameSpan = document.createElement('span');
-            nameSpan.className = 'name';
-            nameSpan.textContent = file.name;
-            const sizeSpan = document.createElement('span');
-            sizeSpan.className = 'size';
-            sizeSpan.textContent = window.formatFileSize(file.size);
-            info.appendChild(nameSpan);
-            info.appendChild(sizeSpan);
-            div.appendChild(info);
-            filelist.appendChild(div);
-            optionsWrap.style.display = 'block';
-            btn.disabled = false;
-        }
-
-        btn.addEventListener('click', async () => {
-            const password = passwordInput.value;
-            const confirm = confirmInput.value;
-            if (!password) {
-                window.showToast('Please enter a password', 'error');
-                return;
-            }
-            if (password !== confirm) {
-                window.showToast('Passwords do not match', 'error');
-                return;
-            }
-            if (password.length < 4) {
-                window.showToast('Password must be at least 4 characters', 'error');
-                return;
-            }
-            btn.disabled = true;
-            btn.textContent = 'Protecting...';
-            try {
-                const arrayBuffer = await state.file.arrayBuffer();
-                const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-                pdfDoc.encrypt({
-                    userPassword: password,
-                    ownerPassword: password
-                });
-                protectedPdfBytes = await pdfDoc.save();
-                resultArea.style.display = 'block';
-                window.showToast('PDF protected!', 'success');
-            } catch (err) {
-                window.showToast('PDF encryption is not fully supported in the browser. The file was saved but may not be password-protected. For reliable encryption, use a server-side tool.', 'warning');
-                try {
-                    const arrayBuffer = await state.file.arrayBuffer();
-                    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-                    protectedPdfBytes = await pdfDoc.save();
-                    resultArea.style.display = 'block';
-                } catch (e) {
-                    window.showToast('Failed to protect PDF: ' + e.message, 'error');
-                }
-            }
-            btn.disabled = false;
-            btn.textContent = 'Protect PDF';
-        });
-
-        downloadBtn.addEventListener('click', () => {
-            if (protectedPdfBytes) {
-                const blob = new Blob([protectedPdfBytes], { type: 'application/pdf' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = state.file.name.replace('.pdf', '_protected.pdf');
-                a.click();
-                URL.revokeObjectURL(url);
-            }
-        });
-    })();
 
     /* ================= PAGE NUMBERS ================= */
     (function() {
@@ -3221,9 +3119,9 @@ document.addEventListener('pdf-deps-ready', function () {
         let numberedPdfBytes = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
 
         async function handleFile(file) {
@@ -3329,9 +3227,9 @@ document.addEventListener('pdf-deps-ready', function () {
         let watermarkedPdfBytes = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
 
         async function handleFile(file) {
@@ -3433,18 +3331,19 @@ document.addEventListener('pdf-deps-ready', function () {
         let organizedPdfBytes = null;
 
         dropzone.addEventListener('click', () => input.click());
-        dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-        dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+        dropzone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); });
+        dropzone.addEventListener('dragleave', e => { e.stopPropagation(); dropzone.classList.remove('dragover'); });
+        dropzone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         input.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
 
         async function handleFile(file) {
             if (!await validatePdfFile(file)) return;
             state.file = file;
             const arrayBuffer = await file.arrayBuffer();
-            const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+            const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+            const pageCount = pdfDoc.getPageCount();
             state.pages = [];
-            for (let i = 1; i <= pdf.numPages; i++) {
+            for (let i = 1; i <= pageCount; i++) {
                 state.pages.push({ index: i - 1, selected: false });
             }
             renderPages();
@@ -3589,11 +3488,14 @@ document.addEventListener('pdf-deps-ready', function () {
         });
 
         // Handle URL hash on page load
+        const validTools = ['merge','compress','split','toimages','rotate','sign','png2jpg','jpg2png','webp2jpg','gif2jpg','bmp2png','svg2png','jpg2pdf','txt2pdf','croppdf','editpdf','pagenums','watermark','organize'];
         if (window.location.hash) {
             const hash = window.location.hash.substring(1);
-            const targetCard = document.querySelector(`.dock-card[data-tool="${hash}"]`);
-            if (targetCard) {
-                targetCard.click();
+            if (validTools.includes(hash)) {
+                const targetCard = document.querySelector('.dock-card[data-tool="' + hash + '"]');
+                if (targetCard) {
+                    targetCard.click();
+                }
             }
         }
     })();

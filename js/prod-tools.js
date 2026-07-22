@@ -359,7 +359,14 @@
 
     function renderDeckSelect() {
         const select = document.getElementById('flashcard-deck');
-        select.innerHTML = Object.keys(decks).map(d => `<option value="${escapeHtml(d)}" ${d === currentDeck ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('');
+        select.textContent = '';
+        Object.keys(decks).forEach(function(d) {
+            var opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = d;
+            if (d === currentDeck) opt.selected = true;
+            select.appendChild(opt);
+        });
     }
 
     function renderCards() {
@@ -858,6 +865,12 @@
     });
 
     // MARKDOWN PREVIEWER
+    function sanitizeUrl(url) {
+        const cleaned = url.replace(/[\t\n\r]/g, '').trim();
+        if (/^\s*(javascript|data|vbscript|blob):/i.test(cleaned)) return '#';
+        return cleaned;
+    }
+
     function renderMarkdown() {
         const md = document.getElementById('markdown-input').value;
         let html = md
@@ -868,7 +881,9 @@
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             .replace(/~~(.*?)~~/g, '<del>$1</del>')
             .replace(/`(.*?)`/g, '<code style="background:var(--bg-muted);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>')
-            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:var(--accent-primary);text-decoration:underline;">$1</a>')
+            .replace(/\[(.*?)\]\((.*?)\)/g, function(match, text, url) {
+                return '<a href="' + sanitizeUrl(url) + '" target="_blank" rel="noopener" style="color:var(--accent-primary);text-decoration:underline;">' + window.encodeHtmlAttr(text) + '</a>';
+            })
             .replace(/^[-*] (.*$)/gm, '<li>$1</li>')
             .replace(/^(\d+)\. (.*$)/gm, '<li>$2</li>')
             .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')

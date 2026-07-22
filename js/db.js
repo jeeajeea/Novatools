@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    const DB_NAME = 'AllToolHubDB';
+    const DB_NAME = 'NovaToolsDB';
     const DB_VERSION = 2;
     const STORE_NAME = 'data';
 

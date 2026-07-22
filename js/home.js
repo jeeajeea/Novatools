@@ -18,8 +18,6 @@
         { name: 'TXT to PDF', desc: 'Convert text files to PDF documents', url: 'pdf-tools.html#txt2pdf', category: 'pdf' },
         { name: 'Crop PDF', desc: 'Remove margins by cropping pages', url: 'pdf-tools.html#croppdf', category: 'pdf' },
         { name: 'Edit PDF', desc: 'Visual PDF editor like Canva', url: 'pdf-tools.html#editpdf', category: 'pdf' },
-        { name: 'Unlock PDF', desc: 'Remove password protection from PDFs', url: 'pdf-tools.html#unlock', category: 'pdf' },
-        { name: 'Protect PDF', desc: 'Add password protection to your PDF', url: 'pdf-tools.html#protect', category: 'pdf' },
         { name: 'Page Numbers', desc: 'Add page numbers to your PDF', url: 'pdf-tools.html#pagenums', category: 'pdf' },
         { name: 'Watermark', desc: 'Add text watermark to PDF pages', url: 'pdf-tools.html#watermark', category: 'pdf' },
         { name: 'Organize PDF', desc: 'Reorder, delete, and manage PDF pages', url: 'pdf-tools.html#organize', category: 'pdf' },
@@ -91,14 +89,14 @@
                 searchResults.innerHTML = '<div class="search-result-item"><p>No tools found matching your search</p></div>';
             } else {
                 searchResults.innerHTML = filtered.map(tool => `
-                    <a href="${tool.url}" class="search-result-item">
+                    <a href="${window.encodeHtmlAttr(tool.url)}" class="search-result-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
                         </svg>
                         <div>
-                            <h4>${tool.name}</h4>
-                            <p>${tool.desc}</p>
+                            <h4>${window.encodeHtmlAttr(tool.name)}</h4>
+                            <p>${window.encodeHtmlAttr(tool.desc)}</p>
                         </div>
                     </a>
                 `).join('');

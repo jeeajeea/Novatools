@@ -1,6 +1,6 @@
 {
-    "name": "AllToolHub",
-    "short_name": "AllToolHub",
+    "name": "NovaTools",
+    "short_name": "NovaTools",
     "description": "Free browser-based tools for PDF editing, calculators, and productivity. No signup required.",
     "start_url": "/index.html",
     "display": "standalone",

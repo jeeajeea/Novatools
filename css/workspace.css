@@ -90,6 +90,7 @@
 }
 
 .dropzone {
+    position: relative;
     border: 2px dashed var(--border-default);
     border-radius: var(--radius-lg);
     padding: var(--space-12) var(--space-6);
@@ -109,6 +110,10 @@
     background: rgba(90, 130, 90, 0.1);
 }
 
+.dropzone input[type="file"] {
+    display: none;
+}
+
 .dropzone-icon {
     width: 64px;
     height: 64px;
@@ -123,10 +128,6 @@
 .dropzone p {
     color: var(--text-muted);
     font-size: 0.9375rem;
-}
-
-.dropzone input[type="file"] {
-    display: none;
 }
 
 .file-list {

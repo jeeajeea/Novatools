@@ -1,25 +1,26 @@
 (function () {
     'use strict';
 
+    var CACHE_BUST = '?v=2';
     var DEPS = [
         {
             global: 'PDFLib',
-            local: 'vendor/pdf-lib.min.js',
+            local: 'vendor/pdf-lib.min.js' + CACHE_BUST,
             cdn: 'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'
         },
         {
             global: 'pdfjsLib',
-            local: 'vendor/pdf.min.js',
+            local: 'vendor/pdf.min.js' + CACHE_BUST,
             cdn: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'
         },
         {
             global: 'JSZip',
-            local: 'vendor/jszip.min.js',
+            local: 'vendor/jszip.min.js' + CACHE_BUST,
             cdn: 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'
         },
         {
             global: 'mammoth',
-            local: 'vendor/mammoth.browser.min.js',
+            local: 'vendor/mammoth.browser.min.js' + CACHE_BUST,
             cdn: 'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js'
         }
     ];

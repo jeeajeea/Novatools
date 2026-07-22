@@ -97,12 +97,22 @@
         });
         doc.querySelectorAll('*').forEach(el => {
             [...el.attributes].forEach(attr => {
-                if (attr.name.startsWith('on') || /javascript:|data:text\/html|vbscript:/i.test(attr.value)) {
+                if (attr.name.startsWith('on')) {
+                    el.removeAttribute(attr.name);
+                    return;
+                }
+                const val = attr.value.replace(/[\t\n\r]/g, '').toLowerCase();
+                if (/^\s*(javascript|data|vbscript|blob):/.test(val)) {
                     el.removeAttribute(attr.name);
                 }
             });
         });
         return doc.body.innerHTML;
+    };
+
+    window.encodeHtmlAttr = function (str) {
+        if (typeof str !== 'string') return '';
+        return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     };
 
     window.downloadBlob = function (blob, filename) {
@@ -126,6 +136,7 @@
     window.initToolRouting = function () {
         function switchTool(toolId) {
             if (!toolId) return;
+            if (/[^a-zA-Z0-9_-]/.test(toolId)) return;
             document.querySelectorAll('.tool-panel').forEach(panel => {
                 panel.classList.toggle('active', panel.id === toolId);
             });

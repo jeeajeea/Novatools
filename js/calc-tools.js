@@ -809,12 +809,18 @@
                 speed: ['m/s', 'km/h', 'mph', 'knots']
             };
             
-            convFrom.innerHTML = '';
-            convTo.innerHTML = '';
+            convFrom.textContent = '';
+            convTo.textContent = '';
             
             (units[category] || []).forEach(function(unit) {
-                convFrom.innerHTML += '<option value="' + unit + '">' + unit + '</option>';
-                convTo.innerHTML += '<option value="' + unit + '">' + unit + '</option>';
+                var opt1 = document.createElement('option');
+                opt1.value = unit;
+                opt1.textContent = unit;
+                convFrom.appendChild(opt1);
+                var opt2 = document.createElement('option');
+                opt2.value = unit;
+                opt2.textContent = unit;
+                convTo.appendChild(opt2);
             });
             
             convTo.selectedIndex = 1;

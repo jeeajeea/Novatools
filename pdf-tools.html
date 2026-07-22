@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self' https://cdnjs.cloudflare.com; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#5a825a">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <title>PDF Tools | Merge, Compress, Split PDF Free - AllToolHub</title>
+    <title>PDF Tools | Merge, Compress, Split PDF Free - NovaTools</title>
     <meta name="description" content="Free PDF tools that work entirely in your browser. Merge, compress, split, convert, and rotate PDFs without uploading files to any server.">
     <meta property="og:title" content="PDF Tools | Free Browser-Based PDF Tools">
     <meta property="og:description" content="Merge, compress, split, and rotate PDFs instantly. 100% private, no uploads.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alltoolhub.com/pdf-tools.html">
     <meta property="og:image" content="https://alltoolhub.com/assets/og/og-image.svg">
-    <meta property="og:site_name" content="AllToolHub">
+    <meta property="og:site_name" content="NovaTools">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://alltoolhub.com/assets/og/og-image.svg">
     <meta name="twitter:url" content="https://alltoolhub.com/pdf-tools.html">
     <link rel="canonical" href="https://alltoolhub.com/pdf-tools.html">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle' fill='white'%3E%26%23x2713;%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='48' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3EN%3C/text%3E%3C/svg%3E">
     <link rel="sitemap" type="application/xml" href="https://alltoolhub.com/sitemap.xml">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +31,12 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/workspace.css">
     <link rel="manifest" href="manifest.json">
+    <style>
+        .page-header { padding: var(--space-6) var(--space-6); }
+        .workspace-main { padding-top: var(--space-4); }
+        .tool-card-link { display:flex; flex-direction:column; align-items:center; gap:var(--space-2); padding:var(--space-5); background:var(--bg-card); border:1px solid var(--border-default); border-radius:var(--radius-lg); text-decoration:none; color:inherit; transition:border-color 0.2s; }
+        .tool-card-link:hover { border-color:var(--accent-primary); }
+    </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -42,15 +49,13 @@
             {"@type": "ListItem", "position": 4, "name": "PDF to Images", "url": "#toimages"},
             {"@type": "ListItem", "position": 5, "name": "Rotate PDF", "url": "#rotate"},
             {"@type": "ListItem", "position": 6, "name": "Sign PDF", "url": "#sign"},
-            {"@type": "ListItem", "position": 7, "name": "Unlock PDF", "url": "#unlock"},
-            {"@type": "ListItem", "position": 8, "name": "Protect PDF", "url": "#protect"},
-            {"@type": "ListItem", "position": 9, "name": "Page Numbers", "url": "#pagenums"},
-            {"@type": "ListItem", "position": 10, "name": "Watermark", "url": "#watermark"},
-            {"@type": "ListItem", "position": 11, "name": "Organize PDF", "url": "#organize"},
-            {"@type": "ListItem", "position": 12, "name": "PNG to JPG", "url": "#png2jpg"},
-            {"@type": "ListItem", "position": 13, "name": "JPG to PNG", "url": "#jpg2png"},
-            {"@type": "ListItem", "position": 14, "name": "WebP to JPG", "url": "#webp2jpg"},
-            {"@type": "ListItem", "position": 15, "name": "GIF to JPG", "url": "#gif2jpg"},
+            {"@type": "ListItem", "position": 7, "name": "Page Numbers", "url": "#pagenums"},
+            {"@type": "ListItem", "position": 8, "name": "Watermark", "url": "#watermark"},
+            {"@type": "ListItem", "position": 9, "name": "Organize PDF", "url": "#organize"},
+            {"@type": "ListItem", "position": 10, "name": "PNG to JPG", "url": "#png2jpg"},
+            {"@type": "ListItem", "position": 11, "name": "JPG to PNG", "url": "#jpg2png"},
+            {"@type": "ListItem", "position": 12, "name": "WebP to JPG", "url": "#webp2jpg"},
+            {"@type": "ListItem", "position": 13, "name": "GIF to JPG", "url": "#gif2jpg"},
             {"@type": "ListItem", "position": 16, "name": "BMP to PNG", "url": "#bmp2png"},
             {"@type": "ListItem", "position": 17, "name": "SVG to PNG", "url": "#svg2png"}
         ]
@@ -86,12 +91,17 @@
         <div class="header-inner">
             <a href="index.html" class="logo">
                 <div class="logo-3d">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <path d="M9 15l2 2 4-4"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="7"/>
+                        <g transform="translate(12,12)">
+                            <line x1="0" y1="-7" x2="0" y2="-9.5"/>
+                            <line x1="0" y1="7" x2="0" y2="9.5"/>
+                            <g transform="rotate(60)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
+                            <g transform="rotate(120)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
+                        </g>
                     </svg>
                 </div>
-                AllToolHub
+                NovaTools
             </a>
             <nav class="nav-links" id="nav-links">
                 <a href="pdf-tools.html" class="active">PDF Tools</a>
@@ -146,17 +156,19 @@
                     </div>
                 </div>
                 <div class="dropzone" id="merge-dropzone">
-                    <input type="file" accept=".pdf" multiple id="merge-input">
-                    <div class="dropzone-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="12" y1="18" x2="12" y2="12" />
-                            <line x1="9" y1="15" x2="15" y2="15" />
-                        </svg>
+                    <input type="file" accept="application/pdf,.pdf" multiple id="merge-input">
+                    <div class="dropzone-content">
+                        <div class="dropzone-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="12" y1="18" x2="12" y2="12" />
+                                <line x1="9" y1="15" x2="15" y2="15" />
+                            </svg>
+                        </div>
+                        <h3>Drop PDF files here</h3>
+                        <p>or click to browse — max 50MB per file</p>
                     </div>
-                    <h3>Drop PDF files here</h3>
-                    <p>or click to browse — max 50MB per file</p>
                 </div>
                 <div class="file-list" id="merge-filelist"></div>
                 <div class="tool-actions">
@@ -186,16 +198,18 @@
                     </div>
                 </div>
                 <div class="dropzone" id="compress-dropzone">
-                    <input type="file" accept=".pdf" id="compress-input">
-                    <div class="dropzone-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="17 8 12 3 7 8" />
-                            <line x1="12" y1="3" x2="12" y2="15" />
-                        </svg>
+                    <input type="file" accept="application/pdf,.pdf" id="compress-input">
+                    <div class="dropzone-content">
+                        <div class="dropzone-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <h3>Drop a PDF file here</h3>
+                        <p>or click to browse — max 50MB</p>
                     </div>
-                    <h3>Drop a PDF file here</h3>
-                    <p>or click to browse — max 50MB</p>
                 </div>
                 <div class="file-list" id="compress-filelist"></div>
                 <div class="compression-select">
@@ -232,16 +246,18 @@
                     </div>
                 </div>
                 <div class="dropzone" id="split-dropzone">
-                    <input type="file" accept=".pdf" id="split-input">
-                    <div class="dropzone-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                            <line x1="12" y1="8" x2="12" y2="16" />
-                            <line x1="8" y1="12" x2="16" y2="12" />
-                        </svg>
+                    <input type="file" accept="application/pdf,.pdf" id="split-input">
+                    <div class="dropzone-content">
+                        <div class="dropzone-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <line x1="12" y1="8" x2="12" y2="16" />
+                                <line x1="8" y1="12" x2="16" y2="12" />
+                            </svg>
+                        </div>
+                        <h3>Drop a PDF file here</h3>
+                        <p>or click to browse</p>
                     </div>
-                    <h3>Drop a PDF file here</h3>
-                    <p>or click to browse</p>
                 </div>
                 <div class="page-grid" id="split-pages"></div>
                 <div class="ranges-input">
@@ -273,16 +289,18 @@
                     </div>
                 </div>
                 <div class="dropzone" id="toimages-dropzone">
-                    <input type="file" accept=".pdf" id="toimages-input">
-                    <div class="dropzone-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                            <circle cx="8.5" cy="8.5" r="1.5" />
-                            <polyline points="21 15 16 10 5 21" />
-                        </svg>
+                    <input type="file" accept="application/pdf,.pdf" id="toimages-input">
+                    <div class="dropzone-content">
+                        <div class="dropzone-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                        </div>
+                        <h3>Drop a PDF file here</h3>
+                        <p>Each page will be converted to a PNG</p>
                     </div>
-                    <h3>Drop a PDF file here</h3>
-                    <p>Each page will be converted to a PNG</p>
                 </div>
                 <div class="progress-bar"><div class="fill" id="toimages-progress"></div></div>
                 <div class="page-grid" id="toimages-pages"></div>
@@ -310,15 +328,17 @@
                     </div>
                 </div>
                 <div class="dropzone" id="rotate-dropzone">
-                    <input type="file" accept=".pdf" id="rotate-input">
-                    <div class="dropzone-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="1 4 1 10 7 10" />
-                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
-                        </svg>
+                    <input type="file" accept="application/pdf,.pdf" id="rotate-input">
+                    <div class="dropzone-content">
+                        <div class="dropzone-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="1 4 1 10 7 10" />
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+                            </svg>
+                        </div>
+                        <h3>Drop a PDF file here</h3>
+                        <p>or click to browse</p>
                     </div>
-                    <h3>Drop a PDF file here</h3>
-                    <p>or click to browse</p>
                 </div>
                 <div class="page-grid" id="rotate-pages"></div>
                 <div class="rotate-controls">
@@ -349,14 +369,16 @@
                     </div>
                 </div>
                 <div class="dropzone" id="sign-dropzone">
-                    <input type="file" accept=".pdf" id="sign-input">
-                    <div class="dropzone-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-                        </svg>
+                    <input type="file" accept="application/pdf,.pdf" id="sign-input">
+                    <div class="dropzone-content">
+                        <div class="dropzone-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                            </svg>
+                        </div>
+                        <h3>Drop a PDF file here</h3>
+                        <p>or click to browse</p>
                     </div>
-                    <h3>Drop a PDF file here</h3>
-                    <p>or click to browse</p>
                 </div>
                 <div class="signature-section">
                     <h4>Create Your Signature</h4>
@@ -396,19 +418,21 @@
                     <div class="sig-panel" id="sig-upload-panel" style="display:none;">
                         <div class="sig-preview-container" id="sig-upload-dropzone">
                             <input type="file" accept="image/png,image/jpeg,image/webp" id="sig-upload-input" style="display:none;">
-                            <div id="sig-upload-trigger">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                    <polyline points="17 8 12 3 7 8"/>
-                                    <line x1="12" y1="3" x2="12" y2="15"/>
-                                </svg>
-                                <h4>Drop signature image here</h4>
-                                <p>or click to browse (PNG, JPG, WebP)</p>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Max 2MB</p>
-                            </div>
-                            <div id="sig-upload-preview" style="display:none; position: relative;">
-                                <img id="sig-upload-img" style="max-width: 100%; max-height: 200px;">
-                                <button class="btn btn-sm btn-secondary" id="sig-upload-remove" style="position: absolute; top: -10px; right: -10px;" aria-label="Remove uploaded signature">×</button>
+                            <div class="dropzone-content">
+                                <div id="sig-upload-trigger">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="17 8 12 3 7 8"/>
+                                        <line x1="12" y1="3" x2="12" y2="15"/>
+                                    </svg>
+                                    <h4>Drop signature image here</h4>
+                                    <p>or click to browse (PNG, JPG, WebP)</p>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted);">Max 2MB</p>
+                                </div>
+                                <div id="sig-upload-preview" style="display:none; position: relative;">
+                                    <img id="sig-upload-img" style="max-width: 100%; max-height: 200px;">
+                                    <button class="btn btn-sm btn-secondary" id="sig-upload-remove" style="position: absolute; top: -10px; right: -10px;" aria-label="Remove uploaded signature">×</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -476,7 +500,7 @@
 
             <div id="png2jpg" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>PNG to JPG</h2><p>Convert PNG images to JPEG format</p></div></div>
-    <div class="dropzone" id="png2jpg-dropzone"><input type="file" accept="image/png" id="png2jpg-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a PNG file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="png2jpg-dropzone"><input type="file" accept="image/png" id="png2jpg-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a PNG file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="png2jpg-filelist"></div>
     <div class="compression-select" style="margin-top: 16px;"><label>Quality: <input type="range" id="png2jpg-quality" min="10" max="100" value="90" style="width: 200px; vertical-align: middle;"> <span id="png2jpg-quality-val">90%</span></label></div>
     <div class="tool-actions"><button class="btn btn-primary" id="png2jpg-btn" disabled>Convert to JPG</button></div>
@@ -485,7 +509,7 @@
 
 <div id="jpg2png" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>JPG to PNG</h2><p>Convert JPEG images to PNG format</p></div></div>
-    <div class="dropzone" id="jpg2png-dropzone"><input type="file" accept="image/jpeg" id="jpg2png-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a JPG file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="jpg2png-dropzone"><input type="file" accept="image/jpeg" id="jpg2png-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a JPG file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="jpg2png-filelist"></div>
     <div class="tool-actions"><button class="btn btn-primary" id="jpg2png-btn" disabled>Convert to PNG</button></div>
     <div class="result-area" id="jpg2png-result"><h4>Conversion Complete</h4><button class="btn btn-primary" id="jpg2png-download">Download PNG</button></div>
@@ -493,7 +517,7 @@
 
 <div id="webp2jpg" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>WebP to JPG</h2><p>Convert WebP images to JPEG format</p></div></div>
-    <div class="dropzone" id="webp2jpg-dropzone"><input type="file" accept="image/webp" id="webp2jpg-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a WebP file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="webp2jpg-dropzone"><input type="file" accept="image/webp" id="webp2jpg-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a WebP file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="webp2jpg-filelist"></div>
     <div class="compression-select" style="margin-top: 16px;"><label>Quality: <input type="range" id="webp2jpg-quality" min="10" max="100" value="90" style="width: 200px; vertical-align: middle;"> <span id="webp2jpg-quality-val">90%</span></label></div>
     <div class="tool-actions"><button class="btn btn-primary" id="webp2jpg-btn" disabled>Convert to JPG</button></div>
@@ -502,7 +526,7 @@
 
 <div id="gif2jpg" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>GIF to JPG</h2><p>Convert GIF images to JPEG format</p></div></div>
-    <div class="dropzone" id="gif2jpg-dropzone"><input type="file" accept="image/gif" id="gif2jpg-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a GIF file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="gif2jpg-dropzone"><input type="file" accept="image/gif" id="gif2jpg-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a GIF file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="gif2jpg-filelist"></div>
     <div class="compression-select" style="margin-top: 16px;"><label>Quality: <input type="range" id="gif2jpg-quality" min="10" max="100" value="90" style="width: 200px; vertical-align: middle;"> <span id="gif2jpg-quality-val">90%</span></label></div>
     <div class="tool-actions"><button class="btn btn-primary" id="gif2jpg-btn" disabled>Convert to JPG</button></div>
@@ -511,7 +535,7 @@
 
 <div id="bmp2png" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>BMP to PNG</h2><p>Convert BMP images to PNG format</p></div></div>
-    <div class="dropzone" id="bmp2png-dropzone"><input type="file" accept="image/bmp" id="bmp2png-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a BMP file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="bmp2png-dropzone"><input type="file" accept="image/bmp" id="bmp2png-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop a BMP file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="bmp2png-filelist"></div>
     <div class="tool-actions"><button class="btn btn-primary" id="bmp2png-btn" disabled>Convert to PNG</button></div>
     <div class="result-area" id="bmp2png-result"><h4>Conversion Complete</h4><button class="btn btn-primary" id="bmp2png-download">Download PNG</button></div>
@@ -519,7 +543,7 @@
 
 <div id="svg2png" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>SVG to PNG</h2><p>Convert SVG vector images to PNG</p></div></div>
-    <div class="dropzone" id="svg2png-dropzone"><input type="file" accept="image/svg+xml" id="svg2png-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop an SVG file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="svg2png-dropzone"><input type="file" accept="image/svg+xml" id="svg2png-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop an SVG file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="svg2png-filelist"></div>
     <div class="compression-select" style="margin-top: 16px;"><label>Width (px): <input type="number" id="svg2png-width" value="800" min="16" max="4000" style="width: 80px;"></label></div>
     <div class="tool-actions"><button class="btn btn-primary" id="svg2png-btn" disabled>Convert to PNG</button></div>
@@ -528,7 +552,7 @@
 
 <div id="jpg2pdf" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><h2>JPG to PDF</h2><p>Combine images into a single PDF</p></div></div>
-    <div class="dropzone" id="jpg2pdf-dropzone"><input type="file" accept="image/*" multiple id="jpg2pdf-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop image files here</h3><p>PNG, JPG, WebP — max 20 files</p></div>
+    <div class="dropzone" id="jpg2pdf-dropzone"><input type="file" accept="image/*" multiple id="jpg2pdf-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3>Drop image files here</h3><p>PNG, JPG, WebP — max 20 files</p></div></div>
     <div class="file-list" id="jpg2pdf-filelist"></div>
     <div class="compression-select" style="margin-top: 16px;"><label><input type="radio" name="jpg2pdf-fit" value="original" checked><span>Original image size</span></label><label><input type="radio" name="jpg2pdf-fit" value="a4"><span>Fit to A4 page</span></label></div>
     <div class="tool-actions"><button class="btn btn-primary" id="jpg2pdf-btn" disabled>Convert to PDF</button><button class="btn btn-secondary" id="jpg2pdf-clear">Clear All</button></div>
@@ -537,7 +561,7 @@
 
 <div id="txt2pdf" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h2>TXT to PDF</h2><p>Convert text files to PDF documents</p></div></div>
-    <div class="dropzone" id="txt2pdf-dropzone"><input type="file" accept=".txt" id="txt2pdf-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Drop a text file here</h3><p>.txt files only</p></div>
+    <div class="dropzone" id="txt2pdf-dropzone"><input type="file" accept="text/plain,.txt" id="txt2pdf-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Drop a text file here</h3><p>.txt files only</p></div></div>
     <div class="file-list" id="txt2pdf-filelist"></div>
     <div class="txt-preview" id="txt2pdf-preview" style="margin-top: 16px; max-height: 200px; overflow: auto; background: var(--bg-secondary); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 13px; white-space: pre-wrap; display: none;"></div>
     <div class="compression-select" style="margin-top: 16px;"><label>Font Size: <input type="number" id="txt2pdf-size" value="11" min="6" max="72" style="width: 60px; padding: 4px;"></label></div>
@@ -547,7 +571,7 @@
 
 <div id="croppdf" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v18"/><path d="M21 6H3"/><path d="M18 21V3"/><path d="M3 18h18"/></svg></div><div><h2>Crop PDF</h2><p>Remove margins by cropping pages</p></div></div>
-    <div class="dropzone" id="crop-dropzone"><input type="file" accept=".pdf" id="crop-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v18"/><path d="M21 6H3"/><path d="M18 21V3"/><path d="M3 18h18"/></svg></div><h3>Drop a PDF file here</h3><p>Preview first page and drag to crop</p></div>
+    <div class="dropzone" id="crop-dropzone"><input type="file" accept="application/pdf,.pdf" id="crop-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v18"/><path d="M21 6H3"/><path d="M18 21V3"/><path d="M3 18h18"/></svg></div><h3>Drop a PDF file here</h3><p>Preview first page and drag to crop</p></div></div>
     <div class="file-list" id="crop-filelist"></div>
     <div id="crop-preview-wrap" style="margin-top: 16px; position: relative; display: none; max-width: 100%; overflow: auto; border: 1px solid var(--border); border-radius: 8px;">
         <canvas id="crop-canvas" style="display: block; max-width: 100%;"></canvas>
@@ -563,7 +587,7 @@
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><div><h2>Edit PDF</h2><p>Visual PDF editor like Canva</p></div></div>
     
     <!-- Dropzone -->
-    <div class="dropzone" id="edit-dropzone"><input type="file" accept=".pdf" id="edit-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="edit-dropzone"><input type="file" accept="application/pdf,.pdf" id="edit-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div></div>
     
     <!-- Canva-style Editor -->
     <div id="canva-editor" style="display: none;">
@@ -704,33 +728,11 @@
     </div>
 </div>
 
-<div id="unlock" class="tool-panel">
-    <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><h2>Unlock PDF</h2><p>Remove password protection from PDFs</p></div></div>
-    <div class="dropzone" id="unlock-dropzone"><input type="file" accept=".pdf" id="unlock-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Drop a password-protected PDF</h3><p>or click to browse</p></div>
-    <div class="file-list" id="unlock-filelist"></div>
-    <div class="unlock-password-section" style="margin: 16px 0; display: none;" id="unlock-password-wrap">
-        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Enter Password</label>
-        <input type="password" id="unlock-password" placeholder="PDF password" style="width: 100%; max-width: 300px;">
-    </div>
-    <div class="tool-actions"><button class="btn btn-primary" id="unlock-btn" disabled>Unlock PDF</button></div>
-    <div class="result-area" id="unlock-result"><h4>PDF Unlocked Successfully</h4><button class="btn btn-primary" id="unlock-download">Download Unlocked PDF</button></div>
-</div>
 
-<div id="protect" class="tool-panel">
-    <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div><h2>Protect PDF</h2><p>Add password protection to your PDF</p></div></div>
-    <div class="dropzone" id="protect-dropzone"><input type="file" accept=".pdf" id="protect-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div>
-    <div class="file-list" id="protect-filelist"></div>
-    <div class="protect-options" style="margin: 16px 0; display: none;" id="protect-options-wrap">
-        <div style="margin-bottom: 12px;"><label style="display: block; font-weight: 500; margin-bottom: 4px;">Password</label><input type="password" id="protect-password" placeholder="Enter password" style="width: 100%; max-width: 300px;"></div>
-        <div><label style="display: block; font-weight: 500; margin-bottom: 4px;">Confirm Password</label><input type="password" id="protect-confirm" placeholder="Confirm password" style="width: 100%; max-width: 300px;"></div>
-    </div>
-    <div class="tool-actions"><button class="btn btn-primary" id="protect-btn" disabled>Protect PDF</button></div>
-    <div class="result-area" id="protect-result"><h4>PDF Protected Successfully</h4><button class="btn btn-primary" id="protect-download">Download Protected PDF</button></div>
-</div>
 
 <div id="pagenums" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/></svg></div><div><h2>Page Numbers</h2><p>Add page numbers to your PDF</p></div></div>
-    <div class="dropzone" id="pagenums-dropzone"><input type="file" accept=".pdf" id="pagenums-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="pagenums-dropzone"><input type="file" accept="application/pdf,.pdf" id="pagenums-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="pagenums-filelist"></div>
     <div class="pagenums-options" style="margin: 16px 0; display: none;" id="pagenums-options-wrap">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
@@ -748,7 +750,7 @@
 
 <div id="watermark" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h2>Watermark</h2><p>Add text watermark to PDF pages</p></div></div>
-    <div class="dropzone" id="watermark-dropzone"><input type="file" accept=".pdf" id="watermark-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="watermark-dropzone"><input type="file" accept="application/pdf,.pdf" id="watermark-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div></div>
     <div class="file-list" id="watermark-filelist"></div>
     <div class="watermark-options" style="margin: 16px 0; display: none;" id="watermark-options-wrap">
         <div style="margin-bottom: 12px;"><label style="display: block; font-weight: 500; margin-bottom: 4px;">Watermark Text</label><input type="text" id="watermark-text" placeholder="Enter watermark text" style="width: 100%; max-width: 100%;"></div>
@@ -765,7 +767,7 @@
 
 <div id="organize" class="tool-panel">
     <div class="tool-header"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><h2>Organize PDF</h2><p>Reorder, delete, and manage PDF pages</p></div></div>
-    <div class="dropzone" id="organize-dropzone"><input type="file" accept=".pdf" id="organize-input"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div>
+    <div class="dropzone" id="organize-dropzone"><input type="file" accept="application/pdf,.pdf" id="organize-input"><div class="dropzone-content"><div class="dropzone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Drop a PDF file here</h3><p>or click to browse</p></div></div>
     <div class="page-grid" id="organize-pages" style="margin: 16px 0; display: none;"></div>
     <p id="organize-instructions" style="font-size: 13px; color: var(--text-muted); display: none;">Click a page to select it, then use the buttons below to move or delete it.</p>
     <div class="organize-actions" style="display: none; gap: 8px; margin: 12px 0; flex-wrap: wrap;" id="organize-actions-wrap">
@@ -878,14 +880,6 @@
                     <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
                     <span>Edit PDF</span>
                 </div>
-                <div class="dock-card" data-tool="unlock">
-                    <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                    <span>Unlock</span>
-                </div>
-                <div class="dock-card" data-tool="protect">
-                    <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div>
-                    <span>Protect</span>
-                </div>
                 <div class="dock-card" data-tool="pagenums">
                     <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
                     <span>Page #</span>
@@ -902,24 +896,83 @@
         </div>
     </div>
 
+    <!-- SEO Content -->
     <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-4);">Why AllToolHub PDF Tools Are Different</h2>
-            <p style="max-width: 700px; color: var(--text-secondary); margin-bottom: var(--space-4);">Unlike other PDF tools that require uploading your files to their servers, all our PDF operations happen directly in your browser. Your documents never leave your device, making our tools the most privacy-conscious option available. Whether you need to merge, compress, split, or convert PDFs, you can trust that your sensitive documents remain completely private.</p>
-            <p style="max-width: 700px; color: var(--text-secondary);">Our PDF tools are free to use with no signup required. We don't show ads, don't track your usage, and don't impose any limits on how many files you can process. All tools work offline once the page loads, making them perfect for users who value their privacy and need reliable PDF management without compromise.</p>
+            <div class="section-header">
+                <h2>What Are NovaTools PDF Tools?</h2>
+                <p>Free, private, browser-based PDF tools that run entirely on your device</p>
+            </div>
+            <div style="max-width: 800px; margin: var(--space-6) auto 0;">
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">NovaTools offers a complete suite of free PDF tools that run entirely in your browser. From <strong>merging and compressing PDFs</strong> to <strong>converting images and adding signatures</strong>, every tool works locally on your device — your files never leave your computer.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Unlike online PDF services that require uploading files to remote servers, NovaTools processes everything using client-side JavaScript. Your sensitive documents stay completely private, and you can use the tools even without an internet connection once the page has loaded.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8;">Whether you need to <a href="#merge">merge multiple PDFs</a>, <a href="#compress">compress a large file</a>, <a href="#split">extract specific pages</a>, or <a href="#sign">add a signature</a>, NovaTools has you covered — all for free with no signup required.</p>
+            </div>
         </div>
     </section>
 
-    <section class="faq-section">
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How to Use NovaTools PDF Tools</h2>
+                <p>Simple three-step process for all PDF operations</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); max-width: 900px; margin: var(--space-8) auto 0;">
+                <div style="text-align: center; padding: var(--space-8); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin: 0 auto var(--space-4);">1</div>
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">Upload Your File</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Drag and drop your PDF or image file into the tool above, or click to browse. Files up to 50MB are supported.</p>
+                </div>
+                <div style="text-align: center; padding: var(--space-8); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin: 0 auto var(--space-4);">2</div>
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">Configure Settings</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Select your preferred options — compression level, page range, output format, or signature style.</p>
+                </div>
+                <div style="text-align: center; padding: var(--space-8); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin: 0 auto var(--space-4);">3</div>
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">Download Result</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Click the action button and your processed file will be ready to download instantly. No waiting, no servers involved.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Use NovaTools for PDF Processing?</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 800px; margin: var(--space-8) auto 0;">
+                <div style="padding: var(--space-6); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">100% Private &amp; Secure</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">All processing happens in your browser. Your files are never uploaded to any server, keeping sensitive documents completely secure.</p>
+                </div>
+                <div style="padding: var(--space-6); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">No Signup or Tracking</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Start using tools immediately. No account creation, no email required, and no tracking of any kind. Your privacy is our priority.</p>
+                </div>
+                <div style="padding: var(--space-6); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">Works Offline</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Once the page has loaded, all tools work without an internet connection. Perfect for travelers or users with limited connectivity.</p>
+                </div>
+                <div style="padding: var(--space-6); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
+                    <h3 style="margin-bottom: var(--space-2); font-size: 1.125rem;">Completely Free</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">All tools are free with no usage limits, no ads, and no hidden charges. Process as many files as you need.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
         <div class="container">
             <div class="faq-header">
-                <h3>Frequently Asked Questions</h3>
-                <p>Find answers to common questions about our PDF tools</p>
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about NovaTools PDF tools</p>
             </div>
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Is my data secure?</span>
+                        <span>Is my data secure when using PDF tools?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="faq-answer">
@@ -932,7 +985,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="faq-answer">
-                        <p>Our PDF tools support PDF files up to 50MB. For image conversion tools, we support PNG, JPG, WebP, GIF, BMP, and SVG formats. Text files (.txt) can also be converted to PDF. All processing is done locally in your browser.</p>
+                        <p>Our PDF tools support PDF files up to 50MB. For image conversion tools, we support PNG, JPG, WebP, GIF, BMP, and SVG formats. Text files (.txt) can also be converted to PDF.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -950,7 +1003,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="faq-answer">
-                        <p>Our compression tool uses advanced algorithms to reduce PDF file size while maintaining document quality. You can choose between three compression levels: Low (best quality), Medium (balanced), and High (smallest file size). The compression happens entirely in your browser.</p>
+                        <p>Our compression tool reduces PDF file size by re-rendering pages as optimized images. You can choose between three compression levels: Low (best quality), Medium (balanced), and High (smallest file size). All processing happens entirely in your browser.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -964,22 +1017,49 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Are these tools free to use?</span>
+                        <span>Are these tools really free to use?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, all our PDF tools are completely free with no hidden costs. No signup required, no subscription, and no limitations on usage. We believe in making document tools accessible to everyone.</p>
+                        <p>Yes, all PDF tools are completely free with no hidden costs. No signup required, no subscription, and no limitations on usage. We believe in making document tools accessible to everyone.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="border-top: 1px solid var(--border-subtle);">
+    <section class="section">
         <div class="container">
             <div class="section-header">
-                <h3>Why AllToolHub PDF Tools Are Different</h3>
-                <p>All PDF processing happens directly in your browser using JavaScript libraries. Your files are never uploaded to any server.</p>
+                <h2>Related PDF Tools</h2>
+                <p>Explore more tools for all your document needs</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); max-width: 900px; margin: var(--space-8) auto 0;">
+                <a href="#compress" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Compress PDF</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Reduce file size</span>
+                </a>
+                <a href="#split" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Split PDF</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Extract pages</span>
+                </a>
+                <a href="#rotate" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Rotate PDF</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Fix orientation</span>
+                </a>
+                <a href="#sign" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Sign PDF</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Add signature</span>
+                </a>
+                <a href="#toimages" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">PDF to Images</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Convert pages</span>
+                </a>
             </div>
         </div>
     </section>
@@ -987,7 +1067,7 @@
 
     <footer class="footer">
         <div class="footer-bottom">
-            <p>&copy; 2026 AllToolHub. All tools are free to use.</p>
+            <p>&copy; 2026 NovaTools. All tools are free to use.</p>
         </div>
     </footer>
 

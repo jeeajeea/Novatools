@@ -8,20 +8,22 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#5a825a">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <title>Productivity Tools | To-Do, Timer, Flashcards - AllToolHub</title>
+    <title>Productivity Tools | To-Do, Timer, Flashcards - NovaTools</title>
     <meta name="description" content="Free productivity tools including to-do lists, word counters, pomodoro timers, flashcards, and habit trackers. Works offline in your browser.">
-    <meta property="og:title" content="Productivity Tools | Free Browser-Based Tools">
+    <meta name="keywords" content="free productivity tools, to-do list, pomodoro timer, word counter, flashcards, habit tracker, quick notes, password generator, markdown previewer, stopwatch, expense tracker, lorem ipsum generator, color palette, tip calculator, online productivity, NovaTools">
+    <meta property="og:title" content="Productivity Tools | To-Do, Timer, Flashcards, Habits & More - NovaTools">
     <meta property="og:description" content="To-Do lists, Word Counter, Pomodoro Timer, Flashcards, and Habit Tracker. All free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alltoolhub.com/productivity.html">
     <meta property="og:image" content="https://alltoolhub.com/assets/og/og-image.svg">
-    <meta property="og:site_name" content="AllToolHub">
+    <meta property="og:site_name" content="NovaTools">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://alltoolhub.com/assets/og/og-image.svg">
+    <meta name="twitter:title" content="Productivity Tools | To-Do, Timer, Flashcards, Habits & More - NovaTools">
     <meta name="twitter:url" content="https://alltoolhub.com/productivity.html">
     <link rel="canonical" href="https://alltoolhub.com/productivity.html">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle' fill='white'%3E%26%23x2713;%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='48' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3EN%3C/text%3E%3C/svg%3E">
     <link rel="sitemap" type="application/xml" href="https://alltoolhub.com/sitemap.xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +31,10 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/workspace.css">
     <link rel="manifest" href="manifest.json">
+    <style>
+        .tool-card-link { display:flex; flex-direction:column; align-items:center; gap:var(--space-2); padding:var(--space-5); background:var(--bg-card); border:1px solid var(--border-default); border-radius:var(--radius-lg); text-decoration:none; color:inherit; transition:border-color 0.2s; }
+        .tool-card-link:hover { border-color:var(--accent-primary); }
+    </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -73,12 +79,17 @@
         <div class="header-inner">
             <a href="index.html" class="logo">
                 <div class="logo-3d">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <path d="M9 15l2 2 4-4"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="7"/>
+                        <g transform="translate(12,12)">
+                            <line x1="0" y1="-7" x2="0" y2="-9.5"/>
+                            <line x1="0" y1="7" x2="0" y2="9.5"/>
+                            <g transform="rotate(60)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
+                            <g transform="rotate(120)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
+                        </g>
                     </svg>
                 </div>
-                AllToolHub
+                NovaTools
             </a>
             <nav class="nav-links" id="nav-links">
                 <a href="pdf-tools.html">PDF Tools</a>
@@ -755,9 +766,90 @@
         </div>
     </div>
 
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>NovaTools Productivity Tools: Work Smarter in Your Browser</h2>
+                <p>Free productivity tools for task management, time tracking, studying, and more — all running locally in your browser with no signup</p>
+            </div>
+            <div style="max-width: 800px; margin: var(--space-6) auto 0;">
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">NovaTools offers a complete suite of <a href="#todo">free productivity tools</a> designed to help you organize tasks, manage time, and boost efficiency. From <a href="#todo">to-do lists</a> and <a href="#pomodoro">Pomodoro timers</a> to <a href="#flashcards">flashcard study decks</a> and <a href="#habits">habit trackers</a>, every tool works entirely in your browser with no server communication.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Our productivity collection includes <a href="#todo">To-Do List</a>, <a href="#wordcount">Word Counter</a>, <a href="#pomodoro">Pomodoro Timer</a>, <a href="#flashcards">Flashcards</a>, <a href="#habits">Habit Tracker</a>, <a href="#notes">Quick Notes</a>, <a href="#password">Password Generator</a>, <a href="#markdown">Markdown Previewer</a>, <a href="#stopwatch">Stopwatch</a>, <a href="#expenses">Expense Tracker</a>, <a href="#lorem">Lorem Ipsum Generator</a>, <a href="#colors">Color Palette Generator</a>, and <a href="#tipcalc">Tip Calculator</a>. All data is stored locally in your browser using local storage — nothing is ever sent to a server.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8;">Every tool is free, requires no account, includes no tracking, and works offline after the initial page load. Your to-do lists, flashcards, habits, notes, and settings all auto-save as you work.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-4);">Why AllToolHub Productivity Tools Are Different</h2>
+            <div class="section-header">
+                <h2>How to Use NovaTools Productivity Tools</h2>
+                <p>Boost your productivity in three simple steps</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); max-width: 800px; margin: var(--space-8) auto 0;">
+                <div class="card" style="text-align: center; padding: var(--space-6);">
+                    <div style="width: 48px; height: 48px; border-radius: var(--radius-full); background: var(--accent-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto var(--space-4);">1</div>
+                    <h4 style="margin-bottom: var(--space-2);">Pick Your Tool</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Browse the dock to find the tool you need — to-do list, timer, flashcards, habit tracker, or any of the other productivity tools.</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-6);">
+                    <div style="width: 48px; height: 48px; border-radius: var(--radius-full); background: var(--accent-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto var(--space-4);">2</div>
+                    <h4 style="margin-bottom: var(--space-2);">Start Working</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Add tasks, create flashcards, track habits, or start the timer. Everything auto-saves to your browser's local storage instantly.</p>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-6);">
+                    <div style="width: 48px; height: 48px; border-radius: var(--radius-full); background: var(--accent-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto var(--space-4);">3</div>
+                    <h4 style="margin-bottom: var(--space-2);">Come Back Anytime</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Your data persists in local storage. Close the tab and return later — everything is right where you left it. No login needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Related Productivity Tools</h2>
+                <p>Explore more tools to supercharge your workflow</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); max-width: 900px; margin: var(--space-8) auto 0;">
+                <a href="#notes" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Quick Notes</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Save ideas locally</span>
+                </a>
+                <a href="#password" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Password Generator</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Strong passwords</span>
+                </a>
+                <a href="#markdown" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Markdown Previewer</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Write & preview</span>
+                </a>
+                <a href="#stopwatch" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3L2 6"/><path d="M22 6l-3-3"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Stopwatch</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Lap recording</span>
+                </a>
+                <a href="#expenses" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Expense Tracker</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Track spending</span>
+                </a>
+                <a href="#colors" class="tool-card-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.1-.12-.16-.26-.16-.43 0-.41.34-.75.75-.75H16c3.31 0 6-2.69 6-6 0-5.17-4.49-8.65-10-8.65z"/></svg>
+                    <span style="font-weight: 600; font-size: 0.9375rem;">Color Palettes</span>
+                    <span style="color: var(--text-muted); font-size: 0.8125rem; text-align: center;">Generate schemes</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-4);">Why NovaTools Productivity Tools Are Different</h2>
             <p style="max-width: 700px; color: var(--text-secondary); margin-bottom: var(--space-4);">Our productivity tools work entirely in your browser with no accounts, no subscriptions, and no data collection. Your to-do lists, flashcards, habits, and notes are stored locally on your device, giving you complete control over your data.</p>
             <p style="max-width: 700px; color: var(--text-secondary);">All tools auto-save as you work, so you never lose progress. The Pomodoro timer helps you focus with customizable work and break intervals. The habit tracker shows your streaks to keep you motivated. Everything works offline and loads instantly. No login required, no tracking, no limits.</p>
         </div>
@@ -831,7 +923,7 @@
 
     <footer class="footer">
         <div class="footer-bottom">
-            <p>&copy; 2026 AllToolHub. All tools are free to use.</p>
+            <p>&copy; 2026 NovaTools. All tools are free to use.</p>
         </div>
     </footer>
 
