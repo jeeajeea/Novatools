@@ -1,33 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://alltoolhub.com/</loc>
-        <lastmod>2026-05-28</lastmod>
+        <loc>https://novatools.online/</loc>
+        <lastmod>2026-07-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://alltoolhub.com/pdf-tools.html</loc>
-        <lastmod>2026-05-28</lastmod>
+        <loc>https://novatools.online/pdf-tools.html</loc>
+        <lastmod>2026-07-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://alltoolhub.com/calculators.html</loc>
-        <lastmod>2026-05-28</lastmod>
+        <loc>https://novatools.online/calculators.html</loc>
+        <lastmod>2026-07-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://alltoolhub.com/productivity.html</loc>
-        <lastmod>2026-05-28</lastmod>
+        <loc>https://novatools.online/productivity.html</loc>
+        <lastmod>2026-07-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://alltoolhub.com/book-writer.html</loc>
-        <lastmod>2026-05-28</lastmod>
+        <loc>https://novatools.online/book-writer.html</loc>
+        <lastmod>2026-07-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://novatools.online/privacy.html</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://novatools.online/terms.html</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://novatools.online/about.html</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://novatools.online/contact.html</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
 </urlset>

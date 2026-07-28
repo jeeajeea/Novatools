@@ -2,17 +2,32 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RHX5W61MS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9RHX5W61MS', { anonymize_ip: true });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+        content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google-analytics.com; worker-src 'self' blob:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://*.g.doubleclick.net https://stats.g.doubleclick.net; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#5a825a">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <title>NovaTools - Free Online PDF Tools, Calculators & Productivity Apps</title>
     <meta name="description"
-        content="Free browser-based tools for PDF editing, calculators, and productivity. No signup required. No tracking. Your files never leave your device.">
+        content="Free browser-based tools for PDF editing, calculators, and productivity. No signup required. Privacy-friendly analytics measure site performance. Your files never leave your device.">
     <meta name="keywords" content="free PDF tools, merge PDF, compress PDF, calculator, GPA calculator, BMI calculator, productivity tools, to-do list, pomodoro timer">
     <meta name="author" content="NovaTools">
     <meta name="robots" content="index, follow">
@@ -20,8 +35,8 @@
     <meta property="og:description"
         content="Free browser-based tools for PDF editing, calculators, and productivity. No signup required. Your files never leave your device.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alltoolhub.com/">
-    <meta property="og:image" content="https://alltoolhub.com/assets/og/og-image.svg">
+    <meta property="og:url" content="https://novatools.online/">
+    <meta property="og:image" content="https://novatools.online/assets/og/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NovaTools">
@@ -29,12 +44,15 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="NovaTools - Free Online Tools">
     <meta name="twitter:description" content="Free browser-based tools for PDF editing, calculators, and productivity. No signup required.">
-    <meta name="twitter:image" content="https://alltoolhub.com/assets/og/og-image.svg">
-    <link rel="canonical" href="https://alltoolhub.com/">
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='48' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3EN%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%235B8C5A' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='65' font-size='48' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3EN%3C/text%3E%3C/svg%3E">
-    <link rel="sitemap" type="application/xml" href="https://alltoolhub.com/sitemap.xml">
+    <meta name="twitter:image" content="https://novatools.online/assets/og/og-image.png">
+    <link rel="canonical" href="https://novatools.online/">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="sitemap" type="application/xml" href="https://novatools.online/sitemap.xml">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -50,10 +68,14 @@
         "@type": "WebSite",
         "name": "NovaTools",
         "description": "Free browser-based tools for PDF editing, calculators, and productivity",
-        "url": "https://alltoolhub.com",
+        "url": "https://novatools.online",
+        "publisher": {
+            "@type": "Organization",
+            "name": "NovaTools"
+        },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://alltoolhub.com/?q={search_term_string}",
+            "target": "https://novatools.online/?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }
@@ -63,7 +85,7 @@
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "url": "https://alltoolhub.com/"}
+            {"@type": "ListItem", "position": 1, "name": "Home", "url": "https://novatools.online/"}
         ]
     }
     </script>
@@ -72,9 +94,17 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "NovaTools",
-        "url": "https://alltoolhub.com",
-        "logo": "https://alltoolhub.com/assets/logo.svg",
-        "sameAs": []
+        "url": "https://novatools.online",
+        "logo": "https://novatools.online/assets/logo.svg",
+        "sameAs": [
+            "https://github.com/novatools",
+            "https://twitter.com/novatools"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "url": "https://novatools.online/contact.html",
+            "contactType": "customer support"
+        }
     }
     </script>
     <script type="application/ld+json">
@@ -95,7 +125,7 @@
                 "name": "Is my data safe and private?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Absolutely. All processing happens directly in your browser. Your files are never uploaded to any server, and we don't track or collect any personal data."
+                    "text": "Absolutely. All processing happens directly in your browser. Your files are never uploaded to any server. We use privacy-friendly analytics to improve the site, and no personal documents are collected."
                 }
             },
             {
@@ -115,7 +145,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="header">
         <div class="header-inner">
-            <a href="index.html" class="logo" aria-label="NovaTools Home">
+            <a href="index.html" class="logo" aria-label="NovaTools Home" aria-current="page">
                 <div class="logo-3d">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="7"/>
@@ -164,7 +194,7 @@
                     </div>
                     <h1>NovaTools: Your Digital Toolbox,<br>Built for Privacy</h1>
                     <p class="hero-subtitle">Professional-grade PDF tools, calculators, and productivity apps that run
-                        entirely in your browser. No uploads. No tracking. No signup.</p>
+                        entirely in your browser. No uploads. Privacy-friendly analytics. No signup.</p>
                     <div class="hero-cta">
                         <a href="pdf-tools.html" class="btn btn-primary btn-lg">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -194,7 +224,7 @@
                         <circle cx="11" cy="11" r="8" />
                         <path d="M21 21l-4.35-4.35" />
                     </svg>
-                    <input type="search" id="tool-search" placeholder="Search tools (e.g., merge PDF, GPA calculator, pomodoro)..." aria-label="Search tools">
+                    <input type="search" id="tool-search" placeholder="Search tools (e.g., merge PDF, GPA calculator, pomodoro)..." aria-label="Search tools" autocomplete="off">
                     <div class="search-shortcuts">
                         <span class="shortcut">PDF</span>
                         <span class="shortcut">Calculator</span>
@@ -555,57 +585,57 @@
                 </div>
                 <div class="faq-list">
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
                             <span>Are all tools really free?</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
-                        <div class="faq-answer">
+                        <div id="faq-answer-1" class="faq-answer">
                             <p>Yes, all tools on NovaTools are completely free to use with no hidden fees, no signup required, and no usage limits. We believe in providing accessible tools for everyone.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
                             <span>Is my data safe and private?</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
-                        <div class="faq-answer">
-                            <p>Absolutely. All processing happens directly in your browser. Your files are never uploaded to any server, and we don't track or collect any personal data. Privacy is our core principle.</p>
+                        <div id="faq-answer-2" class="faq-answer">
+                            <p>Absolutely. All processing happens directly in your browser. Your files are never uploaded to any server. We use privacy-friendly analytics to improve the site, and no personal documents are collected.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
                             <span>Do I need to install anything?</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
-                        <div class="faq-answer">
+                        <div id="faq-answer-3" class="faq-answer">
                             <p>No installation required. All tools run directly in your web browser and work on any device with a modern browser. You can also install NovaTools as a PWA for offline access.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
                             <span>Can I use these tools offline?</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
-                        <div class="faq-answer">
+                        <div id="faq-answer-4" class="faq-answer">
                             <p>Yes! Once you've visited the site, you can install NovaTools as a Progressive Web App (PWA) and use most tools without an internet connection.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
                             <span>What browsers are supported?</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
-                        <div class="faq-answer">
+                        <div id="faq-answer-5" class="faq-answer">
                             <p>NovaTools works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend keeping your browser updated for the best experience.</p>
                         </div>
                     </div>
@@ -646,16 +676,16 @@
                 </a>
                 <p>Professional-free tools that protect your privacy. All processing happens in your browser.</p>
                 <div class="footer-social">
-                    <span aria-label="Twitter" class="social-link" role="img" aria-hidden="true">
+                    <a href="https://twitter.com/novatools" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
-                    </span>
-                    <span aria-label="GitHub" class="social-link" role="img" aria-hidden="true">
+                    </a>
+                    <a href="https://github.com/novatools" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 2.616-.322 1.608 0 3.276 1.218 3.276 1.218.955.542 1.593.668 2.224.668.631 0 1.269-.126 1.824-.668 1.656-1.608 2.608-2.608 2.608-2.608s.955.542 1.593.668c1.008.322 2.616.322 2.616.322.652 1.652.241 2.873.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
-                    </span>
+                    </a>
                 </div>
             </div>
             <div class="footer-links">
@@ -671,7 +701,7 @@
                 <h4>Privacy</h4>
                 <ul>
                     <li>No Uploads</li>
-                    <li>No Tracking</li>
+                    <li>Privacy-Friendly Analytics</li>
                     <li>No Signup</li>
                     <li>100% Client-Side</li>
                 </ul>
@@ -679,10 +709,10 @@
             <div class="footer-links">
                 <h4>Company</h4>
                 <ul>
-                    <li><span>About Us</span></li>
-                    <li><span>Contact</span></li>
-                    <li><span>Privacy Policy</span></li>
-                    <li><span>Terms of Service</span></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
@@ -692,9 +722,9 @@
     </footer>
 
     <div class="toast-container"></div>
-    <script src="js/db.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/home.js"></script>
+    <script defer src="js/db.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/home.js"></script>
 </body>
 
 </html>

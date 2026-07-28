@@ -21,7 +21,13 @@ const ASSETS = [
     './robots.txt',
     './sitemap.xml',
     './assets/icons/icon-192.svg',
-    './assets/icons/icon-512.svg'
+    './assets/icons/icon-512.svg',
+    './assets/icons/icon-192.png',
+    './assets/icons/icon-512.png',
+    './assets/icons/favicon.svg',
+    './favicon.ico',
+    './favicon-32.png',
+    './apple-touch-icon.png'
 ];
 
 self.addEventListener('install', event => {

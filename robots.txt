@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alltoolhub.com/sitemap.xml
+Sitemap: https://novatools.online/sitemap.xml
