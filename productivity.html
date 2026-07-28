@@ -7,21 +7,21 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-9RHX5W61MS', { anonymize_ip: true });
+      gtag('config', 'G-9RHX5W61MS');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://*.g.doubleclick.net https://stats.g.doubleclick.net; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' blob: https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; worker-src 'self' blob:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net https://analytics.google.com https://*.analytics.google.com; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="theme-color" content="#5a825a">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
-    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
-    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5a825a">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
+    <meta name="application-name" content="NovaTools">
+    <meta name="apple-mobile-web-app-title" content="NovaTools">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Productivity Tools | To-Do, Timer, Flashcards - NovaTools</title>
     <meta name="description" content="Free productivity tools including to-do lists, word counters, pomodoro timers, flashcards, and habit trackers. Works offline in your browser.">
     <meta name="keywords" content="free productivity tools, to-do list, pomodoro timer, word counter, flashcards, habit tracker, quick notes, password generator, markdown previewer, stopwatch, expense tracker, lorem ipsum generator, color palette, tip calculator, online productivity, NovaTools">
@@ -41,10 +41,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" sizes="192x192" href="assets/icons/icon-192.png">
+    <link rel="icon" sizes="512x512" href="assets/icons/icon-512.png">
     <link rel="sitemap" type="application/xml" href="https://novatools.online/sitemap.xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+        <link rel="preload" href="css/base.css" as="style">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/workspace.css">
     <link rel="manifest" href="manifest.json">
