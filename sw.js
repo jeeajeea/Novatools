@@ -1,4 +1,4 @@
-const CACHE_NAME = 'novatools-v1';
+const CACHE_NAME = 'toolzo-v1';
 const ASSETS = [
     './',
     './index.html',

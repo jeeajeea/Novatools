@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -18,23 +18,23 @@
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5a825a">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
-    <meta name="application-name" content="NovaTools">
-    <meta name="apple-mobile-web-app-title" content="NovaTools">
+    <meta name="application-name" content="Toolzo">
+    <meta name="apple-mobile-web-app-title" content="Toolzo">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Productivity Tools | To-Do, Timer, Flashcards - NovaTools</title>
+    <title>Productivity Tools | To-Do, Timer, Flashcards - Toolzo</title>
     <meta name="description" content="Free productivity tools including to-do lists, word counters, pomodoro timers, flashcards, and habit trackers. Works offline in your browser.">
-    <meta name="keywords" content="free productivity tools, to-do list, pomodoro timer, word counter, flashcards, habit tracker, quick notes, password generator, markdown previewer, stopwatch, expense tracker, lorem ipsum generator, color palette, tip calculator, online productivity, NovaTools">
-    <meta property="og:title" content="Productivity Tools | To-Do, Timer, Flashcards, Habits & More - NovaTools">
+    <meta name="keywords" content="free productivity tools, to-do list, pomodoro timer, word counter, flashcards, habit tracker, quick notes, password generator, markdown previewer, stopwatch, expense tracker, lorem ipsum generator, color palette, tip calculator, online productivity, Toolzo">
+    <meta property="og:title" content="Productivity Tools | To-Do, Timer, Flashcards, Habits & More - Toolzo">
     <meta property="og:description" content="To-Do lists, Word Counter, Pomodoro Timer, Flashcards, and Habit Tracker. All free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://novatools.online/productivity.html">
     <meta property="og:image" content="https://novatools.online/assets/og/og-image.png">
-    <meta property="og:site_name" content="NovaTools">
+    <meta property="og:site_name" content="Toolzo">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://novatools.online/assets/og/og-image.png">
-    <meta name="twitter:title" content="Productivity Tools | To-Do, Timer, Flashcards, Habits & More - NovaTools">
+    <meta name="twitter:title" content="Productivity Tools | To-Do, Timer, Flashcards, Habits & More - Toolzo">
     <meta name="twitter:url" content="https://novatools.online/productivity.html">
     <link rel="canonical" href="https://novatools.online/productivity.html">
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
@@ -98,18 +98,23 @@
     <header class="header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <div class="logo-3d">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="7"/>
-                        <g transform="translate(12,12)">
-                            <line x1="0" y1="-7" x2="0" y2="-9.5"/>
-                            <line x1="0" y1="7" x2="0" y2="9.5"/>
-                            <g transform="rotate(60)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
-                            <g transform="rotate(120)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
-                        </g>
+                <div class="logo-3d logo-glow">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <defs>
+                            <linearGradient id="navG" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#2563EB"/>
+                                <stop offset="100%" stop-color="#7C3AED"/>
+                            </linearGradient>
+                            <mask id="m">
+                                <rect width="24" height="24" fill="white"/>
+                                <circle cx="12" cy="12" r="3.5" fill="black"/>
+                            </mask>
+                        </defs>
+                        <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#navG)" stroke-width="5" stroke-linecap="round" mask="url(#m)"/>
+                        <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#navG)" stroke-width="5" stroke-linecap="round"/>
                     </svg>
                 </div>
-                NovaTools
+                <span class="logo-text">toolzo</span>
             </a>
             <nav class="nav-links" id="nav-links">
                 <a href="pdf-tools.html">PDF Tools</a>
@@ -138,6 +143,25 @@
 
     <main>
     <div class="page-header">
+        <div class="hero-logo">
+            <div class="logo-3d logo-glow">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <defs>
+                        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#2563EB"/>
+                            <stop offset="100%" stop-color="#7C3AED"/>
+                        </linearGradient>
+                        <mask id="m">
+                            <rect width="24" height="24" fill="white"/>
+                            <circle cx="12" cy="12" r="3.5" fill="black"/>
+                        </mask>
+                    </defs>
+                    <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#g)" stroke-width="5" stroke-linecap="round" mask="url(#m)"/>
+                    <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span>toolzo</span>
+        </div>
         <h1>Productivity Tools</h1>
         <p>To-do lists, timers, flashcards, and more — all free, all private, all in your browser.</p>
     </div>
@@ -789,11 +813,11 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>NovaTools Productivity Tools: Work Smarter in Your Browser</h2>
+                <h2>Toolzo Productivity Tools: Work Smarter in Your Browser</h2>
                 <p>Free productivity tools for task management, time tracking, studying, and more — all running locally in your browser with no signup</p>
             </div>
             <div style="max-width: 800px; margin: var(--space-6) auto 0;">
-                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">NovaTools offers a complete suite of <a href="#todo">free productivity tools</a> designed to help you organize tasks, manage time, and boost efficiency. From <a href="#todo">to-do lists</a> and <a href="#pomodoro">Pomodoro timers</a> to <a href="#flashcards">flashcard study decks</a> and <a href="#habits">habit trackers</a>, every tool works entirely in your browser with no server communication.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Toolzo offers a complete suite of <a href="#todo">free productivity tools</a> designed to help you organize tasks, manage time, and boost efficiency. From <a href="#todo">to-do lists</a> and <a href="#pomodoro">Pomodoro timers</a> to <a href="#flashcards">flashcard study decks</a> and <a href="#habits">habit trackers</a>, every tool works entirely in your browser with no server communication.</p>
                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Our productivity collection includes <a href="#todo">To-Do List</a>, <a href="#wordcount">Word Counter</a>, <a href="#pomodoro">Pomodoro Timer</a>, <a href="#flashcards">Flashcards</a>, <a href="#habits">Habit Tracker</a>, <a href="#notes">Quick Notes</a>, <a href="#password">Password Generator</a>, <a href="#markdown">Markdown Previewer</a>, <a href="#stopwatch">Stopwatch</a>, <a href="#expenses">Expense Tracker</a>, <a href="#lorem">Lorem Ipsum Generator</a>, <a href="#colors">Color Palette Generator</a>, and <a href="#tipcalc">Tip Calculator</a>. All data is stored locally in your browser using local storage — nothing is ever sent to a server.</p>
                 <p style="color: var(--text-secondary); line-height: 1.8;">Every tool is free, requires no account, includes privacy-friendly analytics, and works offline after the initial page load. Your to-do lists, flashcards, habits, notes, and settings all auto-save as you work.</p>
             </div>
@@ -803,7 +827,7 @@
     <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <h2>How to Use NovaTools Productivity Tools</h2>
+                <h2>How to Use Toolzo Productivity Tools</h2>
                 <p>Boost your productivity in three simple steps</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); max-width: 800px; margin: var(--space-8) auto 0;">
@@ -869,7 +893,7 @@
 
     <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-4);">Why NovaTools Productivity Tools Are Different</h2>
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-4);">Why Toolzo Productivity Tools Are Different</h2>
             <p style="max-width: 700px; color: var(--text-secondary); margin-bottom: var(--space-4);">Our productivity tools work entirely in your browser with no accounts, no subscriptions, and no data collection. Your to-do lists, flashcards, habits, and notes are stored locally on your device, giving you complete control over your data.</p>
             <p style="max-width: 700px; color: var(--text-secondary);">All tools auto-save as you work, so you never lose progress. The Pomodoro timer helps you focus with customizable work and break intervals. The habit tracker shows your streaks to keep you motivated. Everything works offline and loads instantly. No login required, privacy-friendly analytics, no limits.</p>
         </div>
@@ -942,27 +966,55 @@
     </main>
 
     <footer class="footer">
-        <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-3d">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                            <defs>
+                                <mask id="fm">
+                                    <rect width="24" height="24" fill="white"/>
+                                    <circle cx="12" cy="12" r="3.5" fill="black"/>
+                                </mask>
+                            </defs>
+                            <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="currentColor" stroke-width="5" stroke-linecap="round" mask="url(#fm)"/>
+                            <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    toolzo
+                </a>
+                <p>Professional-free tools that protect your privacy. All processing happens in your browser.</p>
+            </div>
             <div class="footer-links">
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Privacy</h4>
-                    <ul>
-                        <li>Privacy-Friendly Analytics</li>
-                    </ul>
-                </div>
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="pdf-tools.html">PDF Tools</a></li>
+                    <li><a href="calculators.html">Calculators</a></li>
+                    <li><a href="productivity.html">Productivity</a></li>
+                    <li><a href="book-writer.html">Book Writer</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Privacy</h4>
+                <ul>
+                    <li>No Uploads</li>
+                    <li>Privacy-Friendly Analytics</li>
+                    <li>No Signup</li>
+                    <li>100% Client-Side</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 NovaTools. All tools are free to use.</p>
+            <p>&copy; <span id="current-year">2026</span> Toolzo. All tools are free to use.</p>
         </div>
     </footer>
 

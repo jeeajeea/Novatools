@@ -1,0 +1,187 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
+  <rect width="800" height="1000" fill="#FAFAFA"/>
+  <rect x="0" y="0" width="800" height="64" fill="#0F172A"/>
+  <text x="40" y="42" font-size="24" font-weight="700" fill="white" font-family="'Inter','Segoe UI',sans-serif" letter-spacing="-0.5">Toolzo Brand Guidelines</text>
+
+  <!-- Construction Grid -->
+  <text x="40" y="104" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">1. Construction Grid</text>
+  <text x="40" y="124" font-size="12" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">The symbol is built on a 24Ã—24 unit grid using two circular arcs (radius 13).</text>
+
+  <g transform="translate(40, 148)">
+    <rect x="0" y="0" width="24" height="24" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    <line x1="0" y1="12" x2="24" y2="12" stroke="#E2E8F0" stroke-width="0.25" stroke-dasharray="1 0.5"/>
+    <line x1="12" y1="0" x2="12" y2="24" stroke="#E2E8F0" stroke-width="0.25" stroke-dasharray="1 0.5"/>
+    <line x1="0" y1="0" x2="24" y2="24" stroke="#E2E8F0" stroke-width="0.25" stroke-dasharray="0.5 0.5"/>
+    <line x1="0" y1="24" x2="24" y2="0" stroke="#E2E8F0" stroke-width="0.25" stroke-dasharray="0.5 0.5"/>
+    <circle cx="12" cy="12" r="13" fill="none" stroke="#DBEAFE" stroke-width="0.3" stroke-dasharray="1 0.5"/>
+    <circle cx="12" cy="12" r="13" fill="none" stroke="#93C5FD" stroke-width="0.3" stroke-dasharray="1 0.5" transform="rotate(45, 12, 12)"/>
+
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2563EB"/>
+        <stop offset="100%" stop-color="#7C3AED"/>
+      </linearGradient>
+      <mask id="m1">
+        <rect width="24" height="24" fill="white"/>
+        <circle cx="12" cy="12" r="3.5" fill="black"/>
+      </mask>
+    </defs>
+    <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" mask="url(#m1)"/>
+    <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(40, 240)">
+    <text x="0" y="-4" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Grid overlay at 2x scale</text>
+    <rect x="0" y="0" width="48" height="48" fill="none" stroke="#CBD5E1" stroke-width="0.3"/>
+    <line x1="0" y1="12" x2="48" y2="12" stroke="#CBD5E1" stroke-width="0.2"/>
+    <line x1="0" y1="24" x2="48" y2="24" stroke="#CBD5E1" stroke-width="0.2"/>
+    <line x1="0" y1="36" x2="48" y2="36" stroke="#CBD5E1" stroke-width="0.2"/>
+    <line x1="12" y1="0" x2="12" y2="48" stroke="#CBD5E1" stroke-width="0.2"/>
+    <line x1="24" y1="0" x2="24" y2="48" stroke="#CBD5E1" stroke-width="0.2"/>
+    <line x1="36" y1="0" x2="36" y2="48" stroke="#CBD5E1" stroke-width="0.2"/>
+  </g>
+
+  <g transform="translate(130, 240)">
+    <text x="0" y="-4" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">At actual size (24Ã—24)</text>
+    <g transform="translate(12, 0)">
+      <rect x="0" y="0" width="24" height="24" fill="none" stroke="#CBD5E1" stroke-width="0.3"/>
+      <line x1="0" y1="12" x2="24" y2="12" stroke="#CBD5E1" stroke-width="0.2"/>
+      <line x1="12" y1="0" x2="12" y2="24" stroke="#CBD5E1" stroke-width="0.2"/>
+      <defs>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2563EB"/>
+          <stop offset="100%" stop-color="#7C3AED"/>
+        </linearGradient>
+        <mask id="m2">
+          <rect width="24" height="24" fill="white"/>
+          <circle cx="12" cy="12" r="3.5" fill="black"/>
+        </mask>
+      </defs>
+      <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#g2)" stroke-width="5" stroke-linecap="round" mask="url(#m2)"/>
+      <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#g2)" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(220, 240)">
+    <text x="0" y="-4" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">16px favicon (actual pixel grid)</text>
+    <rect x="0" y="0" width="16" height="16" fill="none" stroke="#CBD5E1" stroke-width="0.3"/>
+    <defs>
+      <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2563EB"/>
+        <stop offset="100%" stop-color="#7C3AED"/>
+      </linearGradient>
+      <mask id="m3">
+        <rect width="16" height="16" fill="white"/>
+        <circle cx="8" cy="8" r="2.33" fill="black"/>
+      </mask>
+    </defs>
+    <path d="M 2 2 A 8.67 8.67 0 0 1 14 14" stroke="url(#g3)" stroke-width="3.33" stroke-linecap="round" mask="url(#m3)"/>
+    <path d="M 2 14 A 8.67 8.67 0 0 0 14 2" stroke="url(#g3)" stroke-width="3.33" stroke-linecap="round"/>
+  </g>
+
+  <!-- Anatomy -->
+  <text x="40" y="324" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">2. Symbol Anatomy</text>
+  <text x="40" y="344" font-size="12" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Two interlocking circular arcs forming a continuous flow â€” not an infinity symbol, not overlapping letters.</text>
+
+  <g transform="translate(40, 360)">
+    <defs>
+      <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2563EB"/>
+        <stop offset="100%" stop-color="#7C3AED"/>
+      </linearGradient>
+      <mask id="m4">
+        <rect width="24" height="24" fill="white"/>
+        <circle cx="12" cy="12" r="3.5" fill="black"/>
+      </mask>
+    </defs>
+    <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#g4)" stroke-width="5" stroke-linecap="round" mask="url(#m4)"/>
+    <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#g4)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(80, 360)">
+    <text x="0" y="-4" font-size="11" fill="#2563EB" font-family="'Inter','Segoe UI',sans-serif">Arc A (front)</text>
+    <text x="0" y="10" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Starts bottom-left, curves</text>
+    <text x="0" y="22" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">through center to top-right.</text>
+    <text x="0" y="34" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Rendered on top.</text>
+  </g>
+
+  <g transform="translate(200, 360)">
+    <text x="0" y="-4" font-size="11" fill="#7C3AED" font-family="'Inter','Segoe UI',sans-serif">Arc B (behind)</text>
+    <text x="0" y="10" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Starts top-left, curves</text>
+    <text x="0" y="22" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">through center to bottom-right.</text>
+    <text x="0" y="34" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Gap at center creates depth.</text>
+  </g>
+
+  <g transform="translate(320, 360)">
+    <text x="0" y="-4" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Center gap (masked)</text>
+    <text x="0" y="10" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">3.5px circle mask creates</text>
+    <text x="0" y="22" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">the interlocking illusion.</text>
+  </g>
+
+  <!-- Color Palette -->
+  <text x="40" y="454" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">3. Color Palette</text>
+
+  <rect x="40" y="472" width="120" height="80" rx="6" fill="#2563EB"/>
+  <text x="100" y="506" text-anchor="middle" font-size="11" font-weight="600" fill="white" font-family="'Inter','Segoe UI',sans-serif">Primary Blue</text>
+  <text x="100" y="522" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)" font-family="'Inter','Segoe UI',sans-serif">#2563EB</text>
+
+  <rect x="176" y="472" width="120" height="80" rx="6" fill="#7C3AED"/>
+  <text x="236" y="506" text-anchor="middle" font-size="11" font-weight="600" fill="white" font-family="'Inter','Segoe UI',sans-serif">Secondary Purple</text>
+  <text x="236" y="522" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)" font-family="'Inter','Segoe UI',sans-serif">#7C3AED</text>
+
+  <rect x="312" y="472" width="120" height="80" rx="6" fill="#0F172A"/>
+  <text x="372" y="506" text-anchor="middle" font-size="11" font-weight="600" fill="white" font-family="'Inter','Segoe UI',sans-serif">Text / Dark</text>
+  <text x="372" y="522" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)" font-family="'Inter','Segoe UI',sans-serif">#0F172A</text>
+
+  <rect x="448" y="472" width="120" height="80" rx="6" fill="#F8FAFC"/>
+  <rect x="448" y="472" width="120" height="80" rx="6" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="508" y="506" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">Light BG</text>
+  <text x="508" y="522" text-anchor="middle" font-size="10" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">#F8FAFC</text>
+
+  <text x="40" y="586" font-size="12" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Gradient direction: bottom-left to top-right (45Â°). Applied to the symbol only â€” never to the wordmark.</text>
+
+  <!-- Typography -->
+  <text x="40" y="626" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">4. Typography</text>
+
+  <text x="40" y="654" font-family="'Manrope','Inter',sans-serif" font-size="28" font-weight="700" fill="#0F172A" letter-spacing="-0.3">toolzo</text>
+  <text x="40" y="676" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Manrope Bold 700 | Lowercase | Letter-spacing: -0.3 | Size: 16pt (horizontal)</text>
+
+  <text x="40" y="720" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">Primary typeface: Manrope Bold (weight 700) â€” all lowercase with tight letter-spacing.</text>
+
+  <!-- Clear Space -->
+  <text x="40" y="770" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">5. Clear Space</text>
+
+  <defs>
+    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <mask id="m5">
+      <rect width="24" height="24" fill="white"/>
+      <circle cx="12" cy="12" r="3.5" fill="black"/>
+    </mask>
+  </defs>
+
+  <g transform="translate(40, 800)">
+    <rect x="-6" y="-6" width="60" height="36" fill="none" stroke="#10B981" stroke-width="1" stroke-dasharray="2 2"/>
+    <rect x="0" y="0" width="48" height="24" fill="none" stroke="#10B981" stroke-width="1"/>
+    <text x="-6" y="-10" font-size="9" fill="#10B981" font-family="'Inter','Segoe UI',sans-serif" font-weight="600">x</text>
+    <text x="48" y="32" font-size="9" fill="#10B981" font-family="'Inter','Segoe UI',sans-serif" font-weight="600">x</text>
+    <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#g5)" stroke-width="5" stroke-linecap="round" mask="url(#m5)"/>
+    <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#g5)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <text x="120" y="804" font-size="12" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">Minimum clear space: 1Ã— the symbol's stroke width</text>
+  <text x="120" y="820" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">On a 24Ã—24 symbol: 5px minimum clearance on all sides.</text>
+
+  <!-- Minimum Size -->
+  <text x="40" y="870" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">6. Minimum Size</text>
+
+  <text x="40" y="894" font-size="12" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">Symbol: 16px (favicon) â€” remains legible and distinct.</text>
+  <text x="40" y="912" font-size="12" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">Horizontal: 32px height â€” below this, use symbol only.</text>
+
+  <!-- Logo Versions -->
+  <text x="40" y="952" font-size="16" font-weight="700" fill="#0F172A" font-family="'Inter','Segoe UI',sans-serif">7. Logo Variants</text>
+  <text x="40" y="976" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">See individual files in assets/: logo-symbol.svg, logo-horizontal.svg, logo-stacked.svg,</text>
+  <text x="40" y="992" font-size="11" fill="#64748B" font-family="'Inter','Segoe UI',sans-serif">logo-light.svg, logo-dark.svg, icons/favicon.svg, icons/app-icon.svg, og/og-image.svg</text>
+</svg>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -19,18 +19,18 @@
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5a825a">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a">
-    <meta name="application-name" content="NovaTools">
-    <meta name="apple-mobile-web-app-title" content="NovaTools">
+    <meta name="application-name" content="Toolzo">
+    <meta name="apple-mobile-web-app-title" content="Toolzo">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>PDF Tools | Merge, Compress, Split PDF Free - NovaTools</title>
+    <title>PDF Tools | Merge, Compress, Split PDF Free - Toolzo</title>
     <meta name="description" content="Free PDF tools that work entirely in your browser. Merge, compress, split, convert, and rotate PDFs without uploading files to any server.">
     <meta property="og:title" content="PDF Tools | Free Browser-Based PDF Tools">
     <meta property="og:description" content="Merge, compress, split, and rotate PDFs instantly. 100% private, no uploads.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://novatools.online/pdf-tools.html">
     <meta property="og:image" content="https://novatools.online/assets/og/og-image.png">
-    <meta property="og:site_name" content="NovaTools">
+    <meta property="og:site_name" content="Toolzo">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://novatools.online/assets/og/og-image.png">
@@ -110,18 +110,23 @@
     <header class="header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <div class="logo-3d">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="7"/>
-                        <g transform="translate(12,12)">
-                            <line x1="0" y1="-7" x2="0" y2="-9.5"/>
-                            <line x1="0" y1="7" x2="0" y2="9.5"/>
-                            <g transform="rotate(60)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
-                            <g transform="rotate(120)"><line x1="0" y1="-7" x2="0" y2="-9.5"/><line x1="0" y1="7" x2="0" y2="9.5"/></g>
-                        </g>
+                <div class="logo-3d logo-glow">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <defs>
+                            <linearGradient id="navG" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#2563EB"/>
+                                <stop offset="100%" stop-color="#7C3AED"/>
+                            </linearGradient>
+                            <mask id="m">
+                                <rect width="24" height="24" fill="white"/>
+                                <circle cx="12" cy="12" r="3.5" fill="black"/>
+                            </mask>
+                        </defs>
+                        <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#navG)" stroke-width="5" stroke-linecap="round" mask="url(#m)"/>
+                        <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#navG)" stroke-width="5" stroke-linecap="round"/>
                     </svg>
                 </div>
-                NovaTools
+                <span class="logo-text">toolzo</span>
             </a>
             <nav class="nav-links" id="nav-links">
                 <a href="pdf-tools.html" class="active">PDF Tools</a>
@@ -150,6 +155,25 @@
 
     <main>
     <div class="page-header">
+        <div class="hero-logo">
+            <div class="logo-3d logo-glow">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <defs>
+                        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#2563EB"/>
+                            <stop offset="100%" stop-color="#7C3AED"/>
+                        </linearGradient>
+                        <mask id="m">
+                            <rect width="24" height="24" fill="white"/>
+                            <circle cx="12" cy="12" r="3.5" fill="black"/>
+                        </mask>
+                    </defs>
+                    <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="url(#g)" stroke-width="5" stroke-linecap="round" mask="url(#m)"/>
+                    <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span>toolzo</span>
+        </div>
         <h1>PDF Tools</h1>
         <p>Merge, compress, split, convert, and rotate PDFs — all in your browser. Your files never leave your device.</p>
     </div>
@@ -920,13 +944,13 @@
     <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <h2>What Are NovaTools PDF Tools?</h2>
+                <h2>What Are Toolzo PDF Tools?</h2>
                 <p>Free, private, browser-based PDF tools that run entirely on your device</p>
             </div>
             <div style="max-width: 800px; margin: var(--space-6) auto 0;">
-                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">NovaTools offers a complete suite of free PDF tools that run entirely in your browser. From <strong>merging and compressing PDFs</strong> to <strong>converting images and adding signatures</strong>, every tool works locally on your device — your files never leave your computer.</p>
-                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Unlike online PDF services that require uploading files to remote servers, NovaTools processes everything using client-side JavaScript. Your sensitive documents stay completely private, and you can use the tools even without an internet connection once the page has loaded.</p>
-                <p style="color: var(--text-secondary); line-height: 1.8;">Whether you need to <a href="#merge">merge multiple PDFs</a>, <a href="#compress">compress a large file</a>, <a href="#split">extract specific pages</a>, or <a href="#sign">add a signature</a>, NovaTools has you covered — all for free with no signup required.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Toolzo offers a complete suite of free PDF tools that run entirely in your browser. From <strong>merging and compressing PDFs</strong> to <strong>converting images and adding signatures</strong>, every tool works locally on your device — your files never leave your computer.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">Unlike online PDF services that require uploading files to remote servers, Toolzo processes everything using client-side JavaScript. Your sensitive documents stay completely private, and you can use the tools even without an internet connection once the page has loaded.</p>
+                <p style="color: var(--text-secondary); line-height: 1.8;">Whether you need to <a href="#merge">merge multiple PDFs</a>, <a href="#compress">compress a large file</a>, <a href="#split">extract specific pages</a>, or <a href="#sign">add a signature</a>, Toolzo has you covered — all for free with no signup required.</p>
             </div>
         </div>
     </section>
@@ -934,7 +958,7 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>How to Use NovaTools PDF Tools</h2>
+                <h2>How to Use Toolzo PDF Tools</h2>
                 <p>Simple three-step process for all PDF operations</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); max-width: 900px; margin: var(--space-8) auto 0;">
@@ -960,7 +984,7 @@
     <section class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <h2>Why Use NovaTools for PDF Processing?</h2>
+                <h2>Why Use Toolzo for PDF Processing?</h2>
             </div>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 800px; margin: var(--space-8) auto 0;">
                 <div style="padding: var(--space-6); background: var(--bg-card); border: 1px solid var(--border-default); border-radius: var(--radius-xl);">
@@ -987,7 +1011,7 @@
         <div class="container">
             <div class="faq-header">
                 <h2>Frequently Asked Questions</h2>
-                <p>Common questions about NovaTools PDF tools</p>
+                <p>Common questions about Toolzo PDF tools</p>
             </div>
             <div class="faq-grid">
                 <div class="faq-item">
@@ -1086,8 +1110,44 @@
     </main>
 
 <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-3d">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                            <defs>
+                                <mask id="fm">
+                                    <rect width="24" height="24" fill="white"/>
+                                    <circle cx="12" cy="12" r="3.5" fill="black"/>
+                                </mask>
+                            </defs>
+                            <path d="M 12 12 C 9 3, 3 4, 3 12 C 3 20, 9 21, 12 12" stroke="currentColor" stroke-width="5" stroke-linecap="round" mask="url(#fm)"/>
+                            <path d="M 12 12 C 15 3, 21 4, 21 12 C 21 20, 15 21, 12 12" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    toolzo
+                </a>
+                <p>Professional-free tools that protect your privacy. All processing happens in your browser.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="pdf-tools.html">PDF Tools</a></li>
+                    <li><a href="calculators.html">Calculators</a></li>
+                    <li><a href="productivity.html">Productivity</a></li>
+                    <li><a href="book-writer.html">Book Writer</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Privacy</h4>
+                <ul>
+                    <li>No Uploads</li>
+                    <li>Privacy-Friendly Analytics</li>
+                    <li>No Signup</li>
+                    <li>100% Client-Side</li>
+                </ul>
+            </div>
+            <div class="footer-links">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
@@ -1096,15 +1156,9 @@
                     <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Privacy</h4>
-                <ul>
-                    <li>Privacy-Friendly Analytics</li>
-                </ul>
-            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 NovaTools. All tools are free to use.</p>
+            <p>&copy; <span id="current-year">2026</span> Toolzo. All tools are free to use.</p>
         </div>
     </footer>
 

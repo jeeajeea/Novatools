@@ -1,2 +1,2 @@
-# all-tool-hub
-All Tool Hub is a free collection of fast, easy-to-use online tools including text utilities, calculators, converters, image tools, and more. Free online tools for text, images, PDFs, calculators, converters, developers, and everyday productivity—all in one place.
+# Toolzo
+Toolzo is a fast, modern collection of free online tools including calculators, converters, text utilities, developer tools, and productivity tools. No signup required.

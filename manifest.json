@@ -1,7 +1,7 @@
 {
-    "name": "NovaTools",
-    "short_name": "NovaTools",
-    "description": "Free browser-based tools for PDF editing, calculators, and productivity. No signup required.",
+    "name": "Toolzo",
+    "short_name": "Toolzo",
+    "description": "Toolzo offers a growing collection of free online tools including calculators, converters, text utilities, developer tools, and productivity tools. Fast, secure, and easy to use.",
     "start_url": "/index.html",
     "display": "standalone",
     "display_override": ["window-controls-overlay", "standalone"],
