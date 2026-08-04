@@ -2,7 +2,7 @@
 
 Toolzo is a free collection of fast, browser-based online tools designed to help students, developers, professionals, and everyday users complete common tasks without installing software.
 
-🌐 Website: https://toolzo.online
+🌐 Live Website: https://toolzo-omega.vercel.app
 
 ## Features
 
@@ -43,6 +43,6 @@ Toolzo is a free collection of fast, browser-based online tools designed to help
 
 ## Visit Toolzo
 
-👉 https://toolzo.online
+👉https://toolzo-omega.vercel.app
 
 If you find Toolzo useful, feel free to star this repository.
